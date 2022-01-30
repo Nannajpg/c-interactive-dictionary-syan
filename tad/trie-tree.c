@@ -7,6 +7,34 @@
 
 struct TrieNode *trieCreateNode(void);
 
+/*METODOS BASICOS*/
+
+  int trieGetSinonimosSize(struct TrieNode *trieNode)
+  {
+      int namesLen = 0;
+      while (trieNode->sinonimos[++namesLen] != NULL);
+      return namesLen;
+  }
+
+  int trieGetAntonimosSize(struct TrieNode *trieNode)
+  {
+      int namesLen = 0;
+      while (trieNode->antonimos[++namesLen] != NULL);
+      return namesLen;
+  }
+
+  char** trieGetSinonimos(struct TrieNode *trieNode)
+  {
+      return trieNode->sinonimos;
+  }
+
+  char** trieGetAntonimos(struct TrieNode *trieNode)
+  {
+      return trieNode->antonimos;
+  }
+
+/*METODOS AVANZADOS*/
+
 // Creacion e inicializacion de un nuevo arbol
 struct TrieNode *trieCreateTree(void) {
   return trieCreateNode();
@@ -57,10 +85,14 @@ void trieInsertWord(struct TrieNode *root, const char *word)
 
     // Se agregan sus sinonimos y antonimos (ESTO ES DE PRUEBA)
     pivot->antonimos = malloc(sizeof(*pivot->antonimos) * 10);
-    pivot->sinonimos = malloc(sizeof(*pivot->sinonimos) * 10);
+    pivot->sinonimos = malloc(sizeof(*pivot->sinonimos) * 25);
     pivot->antonimos[0] = "hola";
     pivot->antonimos[1] = "uwu";
     pivot->sinonimos[0] = "prueba";
+    pivot->sinonimos[1] = "macho";
+    pivot->sinonimos[2] = "pecho";
+    pivot->sinonimos[3] = "pelkudo";
+    pivot->sinonimos[4] = "asd";
 }
 
 // Search regresa 1 si la palabra esta presente en el arbol trie

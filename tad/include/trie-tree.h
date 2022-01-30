@@ -8,7 +8,7 @@
     // Solo pensado para letras de la a-z y en minusculas
     #define CHAR_TO_INDEX(c) ((int)c - (int)'a')
 
-    // TrieNode
+    // TrieNode (Estructura)
     struct TrieNode
     {
         struct TrieNode *children[ALPHABET_SIZE];
@@ -17,6 +17,13 @@
         int isWord;
     };
 
+    // Metodos basicos del TrieTree
+    int trieGetSinonimosSize(struct TrieNode *trieNode);
+    int trieGetAntonimosSize(struct TrieNode *trieNode);
+    char** trieGetSinonimos(struct TrieNode *trieNode);
+    char** trieGetAntonimos(struct TrieNode *trieNode);
+
+    // Metodos especiales del TrieTree
     struct TrieNode *trieCreateTree(void);
     void trieInsertWord(struct TrieNode *root, const char *word);
     struct TrieNode* trieSearchWord(struct TrieNode *root, const char *word);
