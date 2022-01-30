@@ -9,5 +9,5 @@
 #include "../core/include/context.h"
 
 void executeExpressionCommand(Context* context) {
-    //Apilar(context->numberStack, strtod(context->input, NULL));
+    // C:.......
 }
