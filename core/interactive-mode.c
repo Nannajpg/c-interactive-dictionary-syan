@@ -46,10 +46,10 @@ void freeResponseMemory(Context* context) {
   if (strlen(context->response) > 0) free(context->response);
 }
 
-void continueWhenProgramIsRunning(int programIsRunning, Context* context) {
+void continueWhenProgramIsRunning(Context* context) {
   // Vuelve a ejecutar el interactiveModeExecution si es que el
   // programa sigue corriende
-  if (programIsRunning == TRUE)
+  if (context->programIsRunning == TRUE)
     interactiveMode(context);
 }
 
@@ -60,8 +60,6 @@ void displayExecutionOutputs(Context* context) {
     displayErrorWhenHasError(context->error);
     displayResponseWhenHasResponse(context->response);
   }
-
-  freeResponseMemory(context);
 }
 
 void getAndResolveInput(Context* context) {
@@ -79,5 +77,7 @@ void interactiveMode(Context* context) {
 
   displayExecutionOutputs(context);
 
-  continueWhenProgramIsRunning(context->programIsRunning, context);
+  freeResponseMemory(context);
+
+  continueWhenProgramIsRunning(context);
 }

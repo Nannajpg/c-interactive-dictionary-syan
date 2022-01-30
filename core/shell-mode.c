@@ -13,6 +13,7 @@
 #include "./include/get-error.h"
 #include "./include/context.h"
 #include "./include/shell-mode.h"
+#include "./include/is-arguable-command.h"
 
 void shellMode(Context* context, int argQuantity, char* arg[]);
 
@@ -21,24 +22,31 @@ void runShellMode(Context* context, int argQuantity, char* arg[]) {
   shellMode(context, argQuantity, arg);
 }
 
+int isInvalidCommandError(int errorCode) {
+    return (errorCode == INVALID_COMMAND_ERROR);
+}
+
 void shellMode(Context* context, int argQuantity, char* arg[]) {
   char* errorDisplay = "";
   char* lastResponse = "";
   int hasError = FALSE;
+
   for (int i = 1; i < argQuantity; i++) {
 
     strcpy(context->input, arg[i]);
+    if (isArguableCommandInput(arg[i]) && (i + 1) < argQuantity) {
+      strcat(context->input, " ");
+      i++;
+      strcat(context->input, arg[i]);
+    }
+
     executeProgram(context);
 
-    if (context->error == INVALID_COMMAND_ERROR) {
+    if (isInvalidCommandError(INVALID_COMMAND_ERROR)) {
       printf("Comando o accion invalida '%s' en el argumento %i\n", context->input, i);
       hasError = TRUE;
       break;
-    }else if (strcmp(context->command, QUIT_COMMAND) == 0) {
-      hasError = TRUE;
-      break;
     }else{
-
       errorDisplay = GetError(context->error);
       if (strlen(errorDisplay) > 0) {
         hasError = TRUE;
@@ -48,9 +56,16 @@ void shellMode(Context* context, int argQuantity, char* arg[]) {
 
       if (strlen(context->response) > 0) lastResponse = context->response;
     }
+
+    if (!context->programIsRunning) {
+      hasError = TRUE;
+      break;
+    }
   }
+
   if (strlen(lastResponse) > 0 && !hasError) {
     printf("%s\n", lastResponse);
     free(lastResponse);
   }
+
 }
