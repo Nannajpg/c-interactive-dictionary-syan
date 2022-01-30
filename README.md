@@ -1,6 +1,6 @@
 # C Interactive Calculator (WIP)
 
-Lorem ipsum
+Diccionario interactivo de sinonimos y antonimos en C, proyecto Universitario para el curso de "Algoritmos y programacion 2"
 
 Desarrollado como proyecto de Algoritmos y Programacion para la universidad UCAB de Ciudad Guayana 🔰
 
