@@ -1,0 +1,1 @@
+int isInvalidCommandError(int errorCode);

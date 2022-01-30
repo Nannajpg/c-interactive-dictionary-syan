@@ -9,8 +9,9 @@
 #include "../utils/include/get-inputed.h"
 #include "../utils/include/booleans.h"
 
+#include "./lib/include/errors-helper.h"
+#include "./lib/include/get-error.h"
 #include "./include/execute-program.h"
-#include "./include/get-error.h"
 #include "./include/context.h"
 #include "./include/interactive-mode.h"
 
@@ -24,10 +25,6 @@ void runInteractiveMode(Context* context) {
 void displayErrorWhenHasMaxLengthError(Context* context) {
   if(context->error == INPUT_MAX_LENGTH_ERROR)
       printf("Error: se ha ingresado mas caracteres de los permitidos\n      solo se tomaran caracteres hasta el limite permitido (%d)\n", MAX_LENGTH);
-}
-
-int isInvalidCommandError(int errorCode) {
-    return (errorCode == INVALID_COMMAND_ERROR);
 }
 
 void displayErrorWhenHasError(int errorCode) {

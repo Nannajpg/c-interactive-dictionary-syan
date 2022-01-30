@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "./include/errors.h"
+#include "../include/errors.h"
 
 char* GetError(int errorCode)
 {

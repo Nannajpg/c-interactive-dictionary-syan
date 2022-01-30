@@ -9,8 +9,9 @@
 #include "../utils/include/get-inputed.h"
 #include "../utils/include/booleans.h"
 
+#include "./lib/include/errors-helper.h"
+#include "./lib/include/get-error.h"
 #include "./include/execute-program.h"
-#include "./include/get-error.h"
 #include "./include/context.h"
 #include "./include/shell-mode.h"
 #include "./include/is-arguable-command.h"
@@ -20,10 +21,6 @@ void shellMode(Context* context, int argQuantity, char* arg[]);
 void runShellMode(Context* context, int argQuantity, char* arg[]) {
   context->enverioment = ENV_SHELL;
   shellMode(context, argQuantity, arg);
-}
-
-int isInvalidCommandError(int errorCode) {
-    return (errorCode == INVALID_COMMAND_ERROR);
 }
 
 void shellMode(Context* context, int argQuantity, char* arg[]) {

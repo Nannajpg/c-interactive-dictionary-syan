@@ -8,6 +8,6 @@
 #include "../core/include/errors.h"
 #include "../core/include/context.h"
 
-void addNumericValue(Context* context) {
+void executeCargarCommand(Context* context) {
     //Apilar(context->numberStack, strtod(context->input, NULL));
 }
