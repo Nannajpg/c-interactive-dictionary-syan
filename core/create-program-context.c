@@ -7,8 +7,8 @@
 #include "./include/commands.h"
 #include "./include/constans.h"
 #include "./include/errors.h"
-
 #include "./include/context.h"
+#include "../tad/include/trie-tree.h"
 
 Context* CreateProgramContext()
 {
@@ -19,6 +19,7 @@ Context* CreateProgramContext()
     context->programIsRunning = TRUE;
     context->enverioment = ENV_UNDEFINED;
     context->error = NO_ERRORS;
+    context->trieTree = trieCreateTree();
 
     return context;
 }

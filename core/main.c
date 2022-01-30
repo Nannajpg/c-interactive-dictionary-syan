@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "./include/migrate-default-trie-dictionary.h"
 #include "./include/create-program-context.h"
 #include "./include/interactive-mode.h"
 #include "./include/shell-mode.h"
@@ -11,6 +12,8 @@
 int main(int argQuantity, char* arg[])
 {
     Context* context = CreateProgramContext();
+
+    migrateDefaultTrieDictionary(context);
 
     if (argQuantity < 2) {
       runInteractiveMode(context);
