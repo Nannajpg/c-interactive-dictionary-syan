@@ -28,6 +28,12 @@ char* getSecondSentence(char* wholeSentence, char separator) {
     return (startOfSecond + 1);
 }
 
+void dispatchCommandWhenNoErrors(Context* context) {
+  if (context->error == NO_ERRORS) {
+    commandDispatch(context);
+  }
+}
+
 void executeProgram(Context* context) {
   context->error = NO_ERRORS;
   context->response = "";
@@ -41,7 +47,5 @@ void executeProgram(Context* context) {
     context->commandArgument = secondSentence;
   }
 
-  if (context->error == NO_ERRORS && strcmp(context->command, QUIT_COMMAND) != 0) {
-    commandDispatch(context);
-  }
+  dispatchCommandWhenNoErrors(context);
 }
