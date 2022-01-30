@@ -8,6 +8,7 @@
       char* response;
       int programIsRunning;
       int error;
+      int enverioment;
   } Context;
 
 #endif

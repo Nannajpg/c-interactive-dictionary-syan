@@ -17,6 +17,7 @@ Context* CreateProgramContext()
     context->commandArgument = "";
     context->response = "";
     context->programIsRunning = TRUE;
+    context->enverioment = ENV_UNDEFINED;
     context->error = NO_ERRORS;
 
     return context;
