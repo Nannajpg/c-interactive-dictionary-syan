@@ -38,7 +38,6 @@ struct TrieNode *trieCreateNode(void)
 // si la letra es prefijo del nodo se inserta en la siguiente hoja
 void trieInsertWord(struct TrieNode *root, const char *word)
 {
-
     int level;
     int length = strlen(word);
     int index;
@@ -56,7 +55,7 @@ void trieInsertWord(struct TrieNode *root, const char *word)
     // Se marca el nodo como una palabra
     pivot->isWord = 1;
 
-    // Se agregan sus sinonimos y antonimos
+    // Se agregan sus sinonimos y antonimos (ESTO ES DE PRUEBA)
     pivot->antonimos = malloc(sizeof(*pivot->antonimos) * 10);
     pivot->sinonimos = malloc(sizeof(*pivot->sinonimos) * 10);
     pivot->antonimos[0] = "hola";
