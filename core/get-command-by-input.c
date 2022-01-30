@@ -32,7 +32,6 @@ char* getCommandByInput(char *input, int *error) {
     if (strcmp(input, EXPRESSION_COMMAND) == 0) return EXPRESSION_COMMAND;
     if (strcmp(input, AYUDA_COMMAND) == 0) return AYUDA_COMMAND;
     if (strcmp(input, QUIT_COMMAND) == 0) return QUIT_COMMAND;
-    if (isNumber(input)) return ADD_NUMERIC_VALUE;
 
     return IMPOSIBLE_COMMAND;
 }

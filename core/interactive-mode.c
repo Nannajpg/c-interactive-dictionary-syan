@@ -13,6 +13,8 @@
 #include "./include/get-error.h"
 #include "./include/context.h"
 
+void interactiveMode(Context* context);
+
 void displayErrorWhenHasMaxLengthError(Context* context) {
   if(context->error == INPUT_MAX_LENGTH_ERROR)
       printf("Error: se ha ingresado mas caracteres de los permitidos\n      solo se tomaran caracteres hasta el limite permitido (%d)\n", MAX_LENGTH);
@@ -71,5 +73,5 @@ void interactiveMode(Context* context) {
 
   displayExecutionOutputs(context);
 
-  continueWhenProgramIsRunning(programIsRunning, context);
+  continueWhenProgramIsRunning(context->programIsRunning, context);
 }

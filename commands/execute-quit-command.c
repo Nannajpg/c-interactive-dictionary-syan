@@ -3,7 +3,6 @@
 #include <string.h>
 
 #include "../utils/include/booleans.h"
-#include "../utils/include/pila.h"
 
 #include "../core/include/commands.h"
 #include "../core/include/errors.h"

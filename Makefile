@@ -1,10 +1,10 @@
 vpath %.h ./core/include:./utils/include:./utils/include
 vpath %.c ./core:./commands:./utils
 
-TARGET = calc
+TARGET = dictionary
 programa =  get-inputed.o string-formating-utils.o\
 			command-dispatch.o get-error.o get-command-by-input.o execute-quit-command.o\
-			add-numeric-value.o execute-program.o interactive-mode.o main.o
+			add-numeric-value.o execute-program.o interactive-mode.o create-program-context.o main.o
 
 CFLAGS = -Wall
 

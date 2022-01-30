@@ -19,3 +19,5 @@ obj/
 ./core/calc
 ./calc
 calc
+./dictionary
+dictionary

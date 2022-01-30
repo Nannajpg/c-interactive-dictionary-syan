@@ -9,6 +9,9 @@
 #define AYUDA_COMMAND "ayuda"
 #define QUIT_COMMAND "salir"
 
+// ESPECIAL COMMANDS
+#define NO_COMMAND "no_command"
+
 // EASTER EGG
 #define IMPOSIBLE_COMMAND "IMPOSIBLE_COMMAND"
 
