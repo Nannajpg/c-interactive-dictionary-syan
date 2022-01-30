@@ -16,7 +16,7 @@ void migrateDefaultTrieDictionary(Context* context)
   trieInsertWord(context->trieTree, "Mandarina");
   trieInsertWord(context->trieTree, "Espagetti");
 
-  struct TrieNode* manzana = trieSearchWord(context->trieTree, "Manzana");
+  /*struct TrieNode* manzana = trieSearchWord(context->trieTree, "Manzana");
   int sinonimosSize = trieGetSinonimosSize(manzana);
   int antonimosSize = trieGetAntonimosSize(manzana);
   char** sinonimos = trieGetSinonimos(manzana);
@@ -27,5 +27,5 @@ void migrateDefaultTrieDictionary(Context* context)
   int i;
   for (i = 0; i < sinonimosSize; i++) {
     printf("%s\n", sinonimos[i]);
-  }
+  }*/
 }
