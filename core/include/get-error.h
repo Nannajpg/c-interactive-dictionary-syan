@@ -1,0 +1,1 @@
+char* GetError(int errorCode);
