@@ -12,13 +12,11 @@ int main(int argQuantity, char* arg[])
 {
     Context* context = CreateProgramContext();
 
-    //if (argQuantity < 2) {
-      context->enverioment = ENV_INTERACTIVE;
-      interactiveMode(context);
-    /*}else{
-      context->enverioment = ENV_SHELL;
-      shellMode(context, argQuantity, arg);
-    }*/
+    if (argQuantity < 2) {
+      runInteractiveMode(context);
+    }else{
+      runShellMode(context, argQuantity, arg);
+    }
 
     return 0;
 }

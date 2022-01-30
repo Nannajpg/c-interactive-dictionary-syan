@@ -12,6 +12,14 @@
 #include "./include/execute-program.h"
 #include "./include/get-error.h"
 #include "./include/context.h"
+#include "./include/shell-mode.h"
+
+void shellMode(Context* context, int argQuantity, char* arg[]);
+
+void runShellMode(Context* context, int argQuantity, char* arg[]) {
+  context->enverioment = ENV_SHELL;
+  shellMode(context, argQuantity, arg);
+}
 
 void shellMode(Context* context, int argQuantity, char* arg[]) {
   char* errorDisplay = "";

@@ -12,8 +12,14 @@
 #include "./include/execute-program.h"
 #include "./include/get-error.h"
 #include "./include/context.h"
+#include "./include/interactive-mode.h"
 
 void interactiveMode(Context* context);
+
+void runInteractiveMode(Context* context) {
+  context->enverioment = ENV_INTERACTIVE;
+  interactiveMode(context);
+}
 
 void displayErrorWhenHasMaxLengthError(Context* context) {
   if(context->error == INPUT_MAX_LENGTH_ERROR)

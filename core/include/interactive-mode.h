@@ -1,3 +1,3 @@
 #include "./context.h"
 
-void interactiveMode(Context* context);
+void runInteractiveMode(Context* context);
