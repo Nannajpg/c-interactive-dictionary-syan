@@ -3,7 +3,7 @@
 
 
     // linea (Estructura)
-struct linea
+struct Linea
   {
       char *palabra;
       char *palabraRel;
@@ -11,12 +11,12 @@ struct linea
   };
 
     // Metodos basicos del TDA linea
-    char GetPalabra(struct linea *linea);
-    char GetPalabraRel(struct linea *linea);
-    int  GetEsSinonimos(struct linea *linea);
+    char GetPalabra(struct Linea *Linea);
+    char GetPalabraRel(struct Linea *Linea);
+    int  GetEsSinonimos(struct Linea *Linea);
 
-    char SettPalabra(struct linea *linea, char *palabraN);
-    char SettPalabraRel(struct linea *linea, char *palabraN);
-    int  SettEsSinonimos(struct linea *linea, int value);
+    char SettPalabra(struct Linea *linea, char *palabraN);
+    char SettPalabraRel(struct Linea *Linea, char *palabraN);
+    int  SettEsSinonimos(struct Linea *Linea, int value);
 
 #endif /* linea_h */
