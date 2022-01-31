@@ -11,16 +11,22 @@ struct TrieNode *trieCreateNode(void);
 
   int trieGetSinonimosSize(struct TrieNode *trieNode)
   {
-      int namesLen = 0;
-      while (trieNode->sinonimos[++namesLen] != NULL);
-      return namesLen;
+      int arrayLen = 0;
+      if (trieNode->sinonimos)
+        while (trieNode->sinonimos[arrayLen] != NULL){
+          arrayLen++;
+        };
+      return arrayLen;
   }
 
   int trieGetAntonimosSize(struct TrieNode *trieNode)
   {
-      int namesLen = 0;
-      while (trieNode->antonimos[++namesLen] != NULL);
-      return namesLen;
+      int arrayLen = 0;
+      if (trieNode->antonimos)
+        while (trieNode->antonimos[arrayLen] != NULL){
+          arrayLen++;
+        };
+      return arrayLen;
   }
 
   char** trieGetSinonimos(struct TrieNode *trieNode)
@@ -31,6 +37,30 @@ struct TrieNode *trieCreateNode(void);
   char** trieGetAntonimos(struct TrieNode *trieNode)
   {
       return trieNode->antonimos;
+  }
+
+  void trieAddSinonimo(struct TrieNode *trieNode, char* newSinonimo)
+  {
+      int currentSize = trieGetSinonimosSize(trieNode);
+      if (currentSize > 0) {
+        trieNode->sinonimos = realloc(trieNode->sinonimos, sizeof(trieNode->sinonimos) * (currentSize+2));
+      }else{
+        trieNode->sinonimos = malloc(sizeof(trieNode->sinonimos) * 2);
+      }
+      trieNode->sinonimos[currentSize] = newSinonimo;
+      trieNode->sinonimos[currentSize+1] = NULL;
+  }
+
+  void trieAddAntonimo(struct TrieNode *trieNode, char* newAntonimo)
+  {
+    int currentSize = trieGetAntonimosSize(trieNode);
+    if (currentSize > 0) {
+      trieNode->antonimos = realloc(trieNode->antonimos, sizeof(trieNode->antonimos) * (currentSize+2));
+    }else{
+      trieNode->antonimos = malloc(sizeof(trieNode->antonimos) * 2);
+    }
+    trieNode->antonimos[currentSize] = newAntonimo;
+    trieNode->antonimos[currentSize+1] = NULL;
   }
 
 /*METODOS AVANZADOS*/
@@ -84,15 +114,15 @@ void trieInsertWord(struct TrieNode *root, const char *word)
     pivot->isWord = 1;
 
     // Se agregan sus sinonimos y antonimos (ESTO ES DE PRUEBA)
-    pivot->antonimos = malloc(sizeof(*pivot->antonimos) * 10);
-    pivot->sinonimos = malloc(sizeof(*pivot->sinonimos) * 25);
-    pivot->antonimos[0] = "hola";
-    pivot->antonimos[1] = "uwu";
-    pivot->sinonimos[0] = "prueba";
-    pivot->sinonimos[1] = "macho";
-    pivot->sinonimos[2] = "pecho";
-    pivot->sinonimos[3] = "pelkudo";
-    pivot->sinonimos[4] = "asd";
+    /*trieAddAntonimo(pivot, "hola");
+    trieAddAntonimo(pivot, "uwu");
+
+    trieAddSinonimo(pivot, "prueba");
+    trieAddSinonimo(pivot, "macho");
+    trieAddSinonimo(pivot, "pecho");
+    trieAddSinonimo(pivot, "pelkudo");
+    trieAddSinonimo(pivot, "asd");
+    trieAddSinonimo(pivot, "refresco");*/
 }
 
 // Search regresa 1 si la palabra esta presente en el arbol trie

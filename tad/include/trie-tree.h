@@ -22,6 +22,8 @@
     int trieGetAntonimosSize(struct TrieNode *trieNode);
     char** trieGetSinonimos(struct TrieNode *trieNode);
     char** trieGetAntonimos(struct TrieNode *trieNode);
+    void trieAddSinonimo(struct TrieNode *trieNode, char* newSinonimo)
+    void trieAddAntonimo(struct TrieNode *trieNode, char* newAntonimo)
 
     // Metodos especiales del TrieTree
     struct TrieNode *trieCreateTree(void);
