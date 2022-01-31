@@ -4,32 +4,32 @@
 
 #include "./include/linea.h"
 
-  char *GetPalabra(struct linea *linea)
+  char *GetPalabra(struct Linea *Linea)
   {
-    return linea->palabra;
+    return Linea->palabra;
   }
 
-  char *getPalabraRel(struct linea *linea)
+  char *getPalabraRel(struct Linea *Linea)
   {
-    return linea->palabraRel;
+    return Linea->palabraRel;
   }
 
-  int  GetEsSinonimos(struct linea *linea)
+  int  GetEsSinonimos(struct linea *Linea)
   {
-    return linea->esSinonimo;
+    return Linea->esSinonimo;
   }
 
-  char SettPalabra(struct linea *linea, char *palabraN)
+  char SettPalabra(struct linea *Linea, char *palabraN)
   {
-    linea->palabra = palabraN;
+    Linea->palabra = palabraN;
   }
 
-  char SettPalabraRel(struct linea *linea, char *palabraN)
+  char SettPalabraRel(struct Linea *Linea, char *palabraN)
   {
-    linea->palabraRel = palabraN;
+    Linea->palabraRel = palabraN;
   }
 
-  int SettEsSinonimos(struct linea *linea, int value)
+  int SettEsSinonimos(struct Linea *Linea, int value)
   {
-      linea->esSinonimo = value;
+      Linea->esSinonimo = value;
   }
