@@ -1,5 +1,5 @@
 #ifndef linea_h
-  #define linea_h
+#define linea_h
 
   // linea (Estructura)
   struct Linea {
@@ -9,6 +9,9 @@
   };
 
     // Metodos basicos del TDA linea
+  
+    struct Linea* crearLinea(char *palabra,char * palabraRel,int esSinonimo);
+
     char getPalabra(struct Linea *linea);
     char getPalabraRel(struct Linea *linea);
     int  getEsSinonimos(struct Linea *linea);

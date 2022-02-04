@@ -7,7 +7,6 @@
 struct Linea* crearLinea(char *palabra,char * palabraRel,int esSinonimo) {
   struct Linea *pNode = NULL;
   pNode = (struct Linea *) malloc(sizeof(struct Linea));
-  //pNode->palabra = palabra;
   pNode->palabraRel = malloc(sizeof(pNode->palabraRel )*100);
   pNode->palabra = malloc(sizeof(pNode->palabra )*100);
   strcpy(pNode->palabraRel , palabraRel);

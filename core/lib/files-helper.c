@@ -3,11 +3,13 @@
 #include <string.h>
 #include <unistd.h>
 
-#include "./include/file_upload.h"
-#include "../tad/include/linea.h"
-#include "../utils/include/string-formating-utils.h"
+#include "./include/files-helper.h"
+#include "../../tad/include/linea.h"
+#include "../../utils/include/string-formating-utils.h"
 
-int existe_archivo(char fname[]) { 
+long int fsize(char fname[]);   //tamano del archivo
+
+int existeArchivo(char fname[]) { 
     if(access(fname, F_OK) == 0) {
         return 1;    
     }
@@ -31,7 +33,7 @@ long int fsize(char fname[]) {
     }
 }
 
-int cont_Lineas(char fname[]){
+int contarLineasArchivo(char fname[]){
     FILE *archivo = fopen(fname,"r"); 
     int cont = 0;
     char linea[65];
@@ -47,8 +49,13 @@ int cont_Lineas(char fname[]){
     return cont;
     }                
 }
+struct Linea ** cargarArchivoPorNombre(char fname[]) {
+   int size = fsize(fname);
+   int num = contarLineasArchivo(fname);
+   return cargarArchivo(fname, size, num);
+};
 
-struct Linea ** cargar_archivo(char fname[],long int size, int num) {
+struct Linea ** cargarArchivo(char fname[],long int size, int num) {
     FILE *archivo = fopen(fname,"r"); 
     char c[size];
     int i = 0;
@@ -71,7 +78,6 @@ struct Linea ** cargar_archivo(char fname[],long int size, int num) {
                          listaLineas[i] = crearLinea(getFirstSentenceBySeparator((c+2),' '),getSecondSentenceBySeparator((c+2),' '), 0);
                     }
                     i++;
-                //printf("%s\n",getSecondSentenceBySeparator((c+2),' ')); 
 
         }listaLineas[i] = NULL;
     }
