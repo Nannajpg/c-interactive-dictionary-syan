@@ -2,7 +2,7 @@ vpath %.h ./core/include:./core/lib/include:./utils/include:./utils/include:./ta
 vpath %.c ./core:./core/lib:./commands:./utils:./tad
 
 TARGET = dictionary
-programa =  linea.o trie-tree.o get-inputed.o string-formating-utils.o migrate-default-trie-dictionary.o\
+programa = linea.o trie-tree.o convert-lineas-in-to-trie.o get-inputed.o string-formating-utils.o migrate-default-trie-dictionary.o\
 			command-dispatch.o get-error.o errors-helper.o get-command-by-input.o execute-quit-command.o\
 			execute-sinonimos-command.o execute-antonimos-command.o execute-expression-command.o\
 			execute-help-command.o execute-cargar-command.o is-arguable-command.o execute-program.o\
