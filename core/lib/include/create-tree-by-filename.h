@@ -8,4 +8,4 @@
 
 #include "../../../tad/include/trie-tree.h"
 
-int createTreeByFilename(TrieNode * trieTree, char * fileName);
+int createTreeByFilename(struct TrieNode * trieTree, char * fileName);

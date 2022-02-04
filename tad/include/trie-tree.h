@@ -28,6 +28,6 @@
     // Metodos especiales del TrieTree
     struct TrieNode *trieCreateTree(void);
     void trieInsertWord(struct TrieNode *root, const char *word);
-    struct TrieNode* trieSearchWord(struct TrieNode *root, const char *word);
+    struct TrieNode *trieSearchWord(struct TrieNode *root, const char *word);
 
 #endif /* trie_tree_h */

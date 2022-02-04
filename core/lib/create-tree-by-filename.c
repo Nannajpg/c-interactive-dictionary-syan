@@ -12,7 +12,7 @@
 #include "../../tad/include/trie-tree.h"
 #include "./include/files-helper.h"
 
-int createTreeByFilename(TrieNode * trieTree, char * fileName) {
+int createTreeByFilename(struct TrieNode * trieTree, char * fileName) {
   if (!existeArchivo(fileName)) {
     return FILE_NOT_EXISTS_ERROR;
   }

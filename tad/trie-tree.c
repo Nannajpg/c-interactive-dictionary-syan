@@ -5,7 +5,7 @@
 
 #include "./include/trie-tree.h"
 
-struct TrieNode *trieCreateNode(void);
+struct TrieNode * trieCreateNode(void);
 
 /*METODOS BASICOS*/
 
