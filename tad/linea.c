@@ -4,32 +4,39 @@
 
 #include "./include/linea.h"
 
-  char *GetPalabra(struct Linea *linea)
-  {
+struct Linea* crearLinea(char *palabra,char * palabraRel,int esSinonimo) {
+  struct Linea *pNode = NULL;
+  pNode = (struct Linea *) malloc(sizeof(struct Linea));
+  //pNode->palabra = palabra;
+  pNode->palabraRel = malloc(sizeof(pNode->palabraRel )*100);
+  pNode->palabra = malloc(sizeof(pNode->palabra )*100);
+  strcpy(pNode->palabraRel , palabraRel);
+  strcpy(pNode->palabra , palabra);
+  pNode->esSinonimo = esSinonimo;
+   
+  return pNode;
+}
+
+  char *getPalabra(struct Linea *linea){
     return linea->palabra;
   }
 
-  char *GetPalabraRel(struct Linea *linea)
-  {
+  char *getPalabraRel(struct Linea *linea){
     return linea->palabraRel;
   }
 
-  int GetEsSinonimos(struct Linea *linea)
-  {
+  int getEsSinonimos(struct Linea *linea){
     return linea->esSinonimo;
   }
 
-  char SettPalabra(struct Linea *linea, char *palabraN)
-  {
+  char setPalabra(struct Linea *linea, char *palabraN){
     linea->palabra = palabraN;
   }
 
-  char SettPalabraRel(struct Linea *linea, char *palabraN)
-  {
+  char setPalabraRel(struct Linea *linea, char *palabraN){
     linea->palabraRel = palabraN;
   }
 
-  int SettEsSinonimos(struct Linea *linea, int value)
-  {
+  int setEsSinonimos(struct Linea *linea, int value){
       linea->esSinonimo = value;
   }
