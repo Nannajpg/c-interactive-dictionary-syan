@@ -1,3 +1,5 @@
+#ifndef linea_c
+#define linea_c
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -28,14 +30,16 @@ struct Linea* crearLinea(char *palabra,char * palabraRel,int esSinonimo) {
     return linea->esSinonimo;
   }
 
-  char setPalabra(struct Linea *linea, char *palabraN){
+  void setPalabra(struct Linea *linea, char *palabraN){
     linea->palabra = palabraN;
   }
 
-  char setPalabraRel(struct Linea *linea, char *palabraN){
+  void setPalabraRel(struct Linea *linea, char *palabraN){
     linea->palabraRel = palabraN;
   }
 
-  int setEsSinonimos(struct Linea *linea, int value){
+  void setEsSinonimos(struct Linea *linea, int value){
       linea->esSinonimo = value;
   }
+
+#endif
