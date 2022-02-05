@@ -9,16 +9,16 @@
 #include "../core/include/context.h"
 #include "../tad/include/trie-tree.h"
 
-
 void executeAntonimosCommand(Context* context) {
 
   context->error = NO_ERRORS;
 
-  int i;
-
   char *palabra = context->commandArgument;
   struct TrieNode *root = context->trieTree;
   struct TrieNode *result = trieSearchWord(root, palabra);
+  char * str = (char *) malloc(51);
+  char * texto = (char *) malloc(2000);
+  char * textoTmp = (char *) malloc(51);
 
   if (result == NULL){
     printf("Error");
@@ -28,10 +28,18 @@ void executeAntonimosCommand(Context* context) {
   int size = trieGetAntonimosSize(result);
   char ** arregloCadena = trieGetAntonimos(result);
 
-  for(i = 0;i < size; i++) {
+  for (int i = 0; i < size; i++) {
+      snprintf( textoTmp, 50, "%s, ", arregloCadena[i] );
+      strcat(texto, textoTmp);
+    }
+
+  context->response = (char *) malloc(2001);
+  snprintf( context->response, 2000, "%s", texto );
+
+ /* for(i = 0;i < size; i++) {
     
     printf("%s\n",arregloCadena[i]);
-  }
+  } */
 
   //context->response = 
 

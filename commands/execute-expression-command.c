@@ -14,7 +14,7 @@ void executeExpressionCommand(Context* context) {
   context->error = NO_ERRORS;
   struct TrieNode ** arregloNodos = NULL;
   char * str = (char *) malloc(51);
-  char * texto = (char *) malloc(200);
+  char * texto = (char *) malloc(2000);
   arregloNodos = display(context->trieTree, arregloNodos, context->commandArgument, str, 0);
   int cantidadNodos = trieArrayGetLength(arregloNodos);
   char * textoTmp = (char *) malloc(51);
