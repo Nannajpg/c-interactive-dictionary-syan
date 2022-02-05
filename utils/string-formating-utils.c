@@ -27,4 +27,8 @@
         return (startOfSecond + 1);
     }
 
+    char* getFirstSecondSentenceBySeparator(char* wholeSentence, char separator) {
+        return getFirstSentenceBySeparator(getSecondSentenceBySeparator(wholeSentence, separator), separator);
+    }
+
 #endif /* string_formating_utils_c */
