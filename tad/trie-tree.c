@@ -39,6 +39,15 @@ struct TrieNode * trieCreateNode(void);
       return trieNode->antonimos;
   }
 
+  int areStringInArray(char ** stringArray, int arraySize, char * cadena) {
+    for (int i = 0; i < arraySize; i ++) {
+      if (strcmp(stringArray[i], cadena) == 0) {
+        return 1;
+      }
+    }
+    return 0;
+  }
+
   void trieAddSinonimo(struct TrieNode *trieNode, char* newSinonimo)
   {
       int currentSize = trieGetSinonimosSize(trieNode);
