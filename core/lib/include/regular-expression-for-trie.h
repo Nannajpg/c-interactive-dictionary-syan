@@ -3,6 +3,5 @@
 #include "../../../tad/include/trie-tree.h"
 
 // function to display the content of Trie
-void display(struct TrieNode* root, TrieNode ** arregloNodos, char* expression, char str[], int level)
-
+void display(struct TrieNode* root, struct TrieNode ** arregloNodos, char* expression, char* str, int level);
 #endif
