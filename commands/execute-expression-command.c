@@ -15,9 +15,10 @@ void executeExpressionCommand(Context* context) {
   struct TrieNode ** arregloNodos = NULL;
   char * str = (char *) malloc(51);
   char * texto = (char *) malloc(2000);
-  arregloNodos = display(context->trieTree, arregloNodos, context->commandArgument, str, 0);
+  arregloNodos = trieGetNodesMatchRegex(context->trieTree, arregloNodos, context->commandArgument, str, 0);
   int cantidadNodos = trieArrayGetLength(arregloNodos);
   char * textoTmp = (char *) malloc(51);
+  int wordsWritten = 0;
 
   for (int i = 0; i < cantidadNodos; i++) {
     char ** antonimos = trieGetAntonimos(arregloNodos[i]);
@@ -25,15 +26,25 @@ void executeExpressionCommand(Context* context) {
     char ** sinonimos = trieGetSinonimos(arregloNodos[i]);
     int sinonimosSize = trieGetSinonimosSize(arregloNodos[i]);
     for (int k = 0; k < antonimosSize; k++) {
-      snprintf( textoTmp, 50, "%s, ", antonimos[k] );
+      if (wordsWritten <= 0) {
+        snprintf( textoTmp, 50, "%s", antonimos[k] );
+      }else{
+        snprintf( textoTmp, 50, ", %s", antonimos[k] );
+      }
+      wordsWritten++;
       strcat(texto, textoTmp);
     }
     for (int j = 0; j < sinonimosSize; j++) {
-      snprintf( textoTmp, 50, "%s, ", sinonimos[j] );
+      if (wordsWritten <= 0) {
+        snprintf( textoTmp, 50, "%s", sinonimos[j] );
+      }else{
+        snprintf( textoTmp, 50, ", %s", sinonimos[j] );
+      }
+      wordsWritten++;
       strcat(texto, textoTmp);
     }
   }
-  //printf("%s\n", texto);
+
   context->response = (char *) malloc(2001);
   snprintf( context->response, 2000, "%s", texto );
 }

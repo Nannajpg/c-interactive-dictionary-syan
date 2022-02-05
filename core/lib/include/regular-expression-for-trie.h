@@ -3,6 +3,6 @@
 #include "../../../tad/include/trie-tree.h"
 
 // function to display the content of Trie
-struct TrieNode ** display(struct TrieNode* root, struct TrieNode ** arregloNodos, char* expression, char* str, int level);
+struct TrieNode ** trieGetNodesMatchRegex(struct TrieNode* root, struct TrieNode ** arregloNodos, char* expression, char* str, int level);
 
 #endif
