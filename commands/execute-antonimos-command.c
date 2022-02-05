@@ -17,10 +17,15 @@ void executeAntonimosCommand(Context* context) {
   struct TrieNode *root = context->trieTree;
   struct TrieNode *result = trieSearchWord(root, palabra);
   char * texto = (char *) malloc(2000);
+  // Limpiamos la basura de texto que puede venir de antemano
+  if (strlen(texto) > 0) {
+    texto[0] = '\0';
+  }
+
   char * textoTmp = (char *) malloc(51);
 
   if (result == NULL){
-    printf("Error");
+    context->error = WORD_NOT_FOUND_ERROR;
     return;
   }
 
@@ -36,6 +41,6 @@ void executeAntonimosCommand(Context* context) {
       strcat(texto, textoTmp);
   }
 
-  context->response = (char *) malloc(2001);
+  context->response = (char *) malloc(2000);
   snprintf( context->response, 2000, "%s", texto );
 }

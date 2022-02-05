@@ -21,7 +21,5 @@ void executeCargarCommand(Context* context) {
     return;
   }
 
-  char * texto = "Arbol Trie cargado con exito!";
-  context->response = (char *) malloc(200);
-  snprintf( context->response, 201, "%s", texto );
+  context->response = "Arbol Trie cargado con exito!";
 }

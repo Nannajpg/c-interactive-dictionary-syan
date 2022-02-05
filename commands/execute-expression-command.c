@@ -15,10 +15,22 @@ void executeExpressionCommand(Context* context) {
   struct TrieNode ** arregloNodos = NULL;
   char * str = (char *) malloc(51);
   char * texto = (char *) malloc(2000);
+  // Limpiamos la basura de texto que puede venir de antemano
+  if (strlen(texto) > 0) {
+    texto[0] = '\0';
+  }
+
   arregloNodos = trieGetNodesMatchRegex(context->trieTree, arregloNodos, context->commandArgument, str, 0);
   int cantidadNodos = trieArrayGetLength(arregloNodos);
   char * textoTmp = (char *) malloc(51);
   int wordsWritten = 0;
+
+
+
+  if (cantidadNodos <= 0) {
+    context->error = MATCH_NOT_FOUND_ERROR;
+    return;
+  }
 
   for (int i = 0; i < cantidadNodos; i++) {
     char ** antonimos = trieGetAntonimos(arregloNodos[i]);
@@ -46,5 +58,5 @@ void executeExpressionCommand(Context* context) {
   }
 
   context->response = (char *) malloc(2001);
-  snprintf( context->response, 2000, "%s", texto );
+  context->response = texto;
 }

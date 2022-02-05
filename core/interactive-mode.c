@@ -31,16 +31,20 @@ void displayErrorWhenHasError(int errorCode) {
     char* errorDisplay = "";
     // Error displayer
     errorDisplay = GetError(errorCode);
-    if (strlen(errorDisplay) > 0) printf(">%s\n", errorDisplay);
+    if (strlen(errorDisplay) > 0) printf("DICT>%s\n", errorDisplay);
 }
 
 void displayResponseWhenHasResponse(char* response) {
     // Response of Command (If is Neccesary)
-    if (strlen(response) > 0) printf(">%s\n", response);
+    if (strlen(response) > 0) printf("DICT>%s\n", response);
 }
 
 void freeResponseMemory(Context* context) {
-  if (strlen(context->response) > 0) free(context->response);
+  if (strlen(context->response) > 0) {
+    context->response[0] = '\0';
+    free(context->response);
+    context->response = NULL;
+  }
 }
 
 void continueWhenProgramIsRunning(Context* context) {
@@ -52,7 +56,7 @@ void continueWhenProgramIsRunning(Context* context) {
 
 void displayExecutionOutputs(Context* context) {
   if (isInvalidCommandError(context->error)) {
-    printf(">Accion invalida.\n");
+    printf("DICT>Accion invalida.\n");
   }else{
     displayErrorWhenHasError(context->error);
     displayResponseWhenHasResponse(context->response);
