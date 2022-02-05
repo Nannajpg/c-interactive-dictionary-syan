@@ -39,7 +39,7 @@ struct TrieNode * trieCreateNode(void);
       return trieNode->antonimos;
   }
 
-  int trieGetisWord(struct TrieNode *trieNode)
+  int trieIsWord(struct TrieNode *trieNode)
   {
       return trieNode->isWord;
   }
