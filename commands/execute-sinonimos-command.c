@@ -9,6 +9,27 @@
 #include "../core/include/context.h"
 
 void executeSinonimosCommand(Context* context) {
+
+  context->error = NO_ERRORS;
+  int i;
+
+  char *palabra = context->commandArgument;
+  struct TrieNode *root = context->trieTree;
+  struct TrieNode *result = trieSearchWord(root, palabra);
+
+  if (result == NULL){
+    printf("Error");
+    return;
+  }
+
+  int size = trieGetSinonimosSize(result);
+  char ** arregloCadena = trieGetSinonimosSize(result);
+
+  for(i = 0;i < size; i++) {
+    
+    printf("%s\n",arregloCadena[i]);
+  }
+
   /*
     context->commandArgument  <-- La palabra
     context->response         <-- Donde enviar la respuesta

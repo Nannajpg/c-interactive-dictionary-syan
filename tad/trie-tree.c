@@ -134,12 +134,9 @@ struct TrieNode* trieSearchWord(struct TrieNode *root, const char *word)
     int index;
     struct TrieNode *pivot = root;
 
-    printf("\nword:%s",word);
-
     for (level = 0; level < length; level++)
     {
-        index = CHAR_TO_INDEX(tolower(word[level]));
-        printf("\nnivel:%d",level);  
+        index = CHAR_TO_INDEX(tolower(word[level])); 
 
         if (!pivot->children[index])
             return 0;

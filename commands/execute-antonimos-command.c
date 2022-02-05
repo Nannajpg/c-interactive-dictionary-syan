@@ -11,33 +11,29 @@
 
 
 void executeAntonimosCommand(Context* context) {
-  
-  /*typedef struct context {
-      char input[129];
-      char* command;
-      char* commandArgument;
-      char* response;
-      int programIsRunning;
-      int error;
-      int enverioment;
-      struct TrieNode* trieTree;
-  } Context;*/
 
   context->error = NO_ERRORS;
 
-  char *palabra = context->commandArgument;
-  //struct TrieNode *root = ;
-  struct TrieNode *result = trieSearchWord(context->trieTree, palabra);
-  //int aux = trieIsWord(result);
+  int i;
 
-  printf("palabra:%s",palabra);
+  char *palabra = context->commandArgument;
+  struct TrieNode *root = context->trieTree;
+  struct TrieNode *result = trieSearchWord(root, palabra);
 
   if (result == NULL){
     printf("Error");
     return;
   }
 
-  printf("Encontrado menazi");
+  int size = trieGetAntonimosSize(result);
+  char ** arregloCadena = trieGetAntonimos(result);
+
+  for(i = 0;i < size; i++) {
+    
+    printf("%s\n",arregloCadena[i]);
+  }
+
+  //context->response = 
 
   //int trieGetAntonimosSize(struct TrieNode *trieNode);
 
