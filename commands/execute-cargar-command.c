@@ -15,6 +15,9 @@ void executeCargarCommand(Context* context) {
   setContextCodeError(context, NO_ERRORS);
   char * fileName = getArgument(context);
 
+  // Creamos un nuevo arbol dentro del Context
+  reCreateNewTree(context);
+
   int errorCode = createTreeByFilename(getTrieTree(context), fileName);
   if (errorCode == FILE_NOT_EXISTS_ERROR) {
     setContextCodeError(context, errorCode);

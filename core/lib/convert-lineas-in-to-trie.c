@@ -10,8 +10,13 @@ void trieInsertLinea(struct TrieNode *root, struct Linea *linea);
 void convertLineasInToTrie(struct TrieNode *root, struct Linea **lineas, int cantidadLineas)
 {
    int i = 0;
+   //printf("cantidadLineas---> %d\n", cantidadLineas);
    for (i = 0; i < cantidadLineas; i++) {
-        if (lineas[i]) trieInsertLinea(root, lineas[i]);
+        //printf("bb--->\n");
+        if (lineas[i]) {
+          //printf("aa---> %s\n", getPalabra(lineas[i]));
+          trieInsertLinea(root, lineas[i]);
+        }
    }
 }
 

@@ -23,5 +23,9 @@ int createTreeByFilename(struct TrieNode * trieTree, char * fileName) {
   struct Linea ** lineas = cargarArchivoPorNombre(fileName);
 
   convertLineasInToTrie(trieTree, lineas, cantidadLineas);
+
+  free(lineas);
+  lineas = NULL;
+
   return NO_ERRORS;
 }

@@ -40,6 +40,7 @@
     void setTrieTree(Context * context, struct TrieNode * root);
 
   // Metodos especiales
+  void reCreateNewTree(Context * context);
   void setResponseSize(Context * context, int size);
   void setResponse(Context * context, int size, char * value);
   void freeResponseMemory(Context* context);

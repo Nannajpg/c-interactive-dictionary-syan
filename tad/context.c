@@ -103,6 +103,14 @@
       }
 
   // Metodos especiales
+    void reCreateNewTree(Context * context){
+      // Se elimina el arbol anterior
+      free(context->trieTree);
+      setTrieTree(context, NULL);
+      // Se crea un nuevo arbol
+      setTrieTree(context, trieCreateTree());
+    }
+
     void setResponse(Context * context, int size, char * value){
         setResponseSize(context, size);
         snprintf( context->response, size, "%s", value );
