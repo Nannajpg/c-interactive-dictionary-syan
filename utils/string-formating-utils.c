@@ -15,7 +15,7 @@
         char *sp;
 
         sp = strchr(wholeSentence, separator);
-        if (!sp) wholeSentence;
+        if (!sp) return wholeSentence;
 
         return strndup(wholeSentence, sp-wholeSentence); /* Copy chars until space */
 

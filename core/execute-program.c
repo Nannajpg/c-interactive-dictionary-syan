@@ -23,8 +23,8 @@ void executeProgram(Context* context) {
   char* secondSentence = NULL;
   char* input = getInput(context);
 
-  firstSentence = getFirstSentenceBySeparator(getInput(context), ' ');
-  secondSentence = getSecondSentenceBySeparator(getInput(context), ' ');
+  firstSentence = getFirstSentenceBySeparator(input, ' ');
+  secondSentence = getSecondSentenceBySeparator(input, ' ');
 
   setCommand(context, getCommandByInput(firstSentence, getContextErrorReference(context)));
   if (secondSentence) {
