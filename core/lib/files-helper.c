@@ -7,6 +7,8 @@
 #include "../../tad/include/linea.h"
 #include "../../utils/include/string-formating-utils.h"
 
+struct Linea ** cargarArchivo(char fname[],long int size, int num);
+
 long int fsize(char fname[]);   //tamano del archivo
 struct Linea ** cargarArchivo(char fname[],long int size, int num);
 
