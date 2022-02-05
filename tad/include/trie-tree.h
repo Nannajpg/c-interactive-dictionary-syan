@@ -30,5 +30,6 @@
     struct TrieNode *trieCreateTree(void);
     struct TrieNode *trieInsertWord(struct TrieNode *root, const char *word);
     struct TrieNode *trieSearchWord(struct TrieNode *root, const char *word);
+    struct TrieNode * removeTrieTree(struct TrieNode* root);
 
 #endif /* trie_tree_h */

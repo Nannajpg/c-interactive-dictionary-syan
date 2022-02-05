@@ -105,7 +105,7 @@
   // Metodos especiales
     void reCreateNewTree(Context * context){
       // Se elimina el arbol anterior
-      free(context->trieTree);
+      removeTrieTree(context->trieTree);
       setTrieTree(context, NULL);
       // Se crea un nuevo arbol
       setTrieTree(context, trieCreateTree());

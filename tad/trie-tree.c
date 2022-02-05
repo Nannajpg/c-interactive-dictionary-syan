@@ -227,3 +227,32 @@ struct TrieNode* trieSearchWord(struct TrieNode *root, const char *word)
 
     return NULL;
 }
+
+// Si el arbol no tiene mas hijos retornara true
+int isEmpty(struct TrieNode* root)
+{
+    for (int i = 0; i < ALPHABET_SIZE; i++)
+        if (root->children[i])
+            return 0;
+    return 1;
+}
+
+struct TrieNode * removeTrieTree(struct TrieNode* root)
+{
+    // Si no esta vacio, recorre los hijos con esta funcion
+    if (!isEmpty(root)) {
+      for (int i = 0; i < ALPHABET_SIZE; i++)
+      {
+          if (root->children[i])
+          {
+              //printf("Eliminando %d\n", i);
+              // Llama a la eliminacion de uno de sus hijos
+              root->children[i] = removeTrieTree(root->children[i]);
+          }
+      }
+    }
+
+    // Termina eliminandose a si mismo
+    free(root);
+    return NULL;
+}

@@ -25,6 +25,6 @@ void executeCargarCommand(Context* context) {
   }
 
   char * texto = (char *) malloc(400);
-  texto = "Arbol Trie cargado con exito!";
+  texto = "Se ha cargado un nuevo arbol y sobreescrito el arbol anterior con exito!";
   setResponse(context, 400, texto);
 }
