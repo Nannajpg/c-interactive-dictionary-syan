@@ -11,10 +11,13 @@
 #include "../core/lib/include/regular-expression-for-trie.h"
 
 void executeExpressionCommand(Context* context) {
+  context->error = NO_ERRORS;
   struct TrieNode ** arregloNodos = NULL;
-  char  str[200];
+  char * str = (char *) malloc(51);
+  char * texto = (char *) malloc(200);
   arregloNodos = display(context->trieTree, arregloNodos, context->commandArgument, str, 0);
   int cantidadNodos = trieArrayGetLength(arregloNodos);
+  char * textoTmp = (char *) malloc(51);
 
   for (int i = 0; i < cantidadNodos; i++) {
     char ** antonimos = trieGetAntonimos(arregloNodos[i]);
@@ -22,11 +25,15 @@ void executeExpressionCommand(Context* context) {
     char ** sinonimos = trieGetSinonimos(arregloNodos[i]);
     int sinonimosSize = trieGetSinonimosSize(arregloNodos[i]);
     for (int k = 0; k < antonimosSize; k++) {
-      printf("%s, ", antonimos[k]);
+      snprintf( textoTmp, 50, "%s, ", antonimos[k] );
+      strcat(texto, textoTmp);
     }
     for (int j = 0; j < sinonimosSize; j++) {
-      printf("%s, ", sinonimos[j]);
+      snprintf( textoTmp, 50, "%s, ", sinonimos[j] );
+      strcat(texto, textoTmp);
     }
   }
-
+  //printf("%s\n", texto);
+  context->response = (char *) malloc(2001);
+  snprintf( context->response, 2000, "%s", texto );
 }
