@@ -17,9 +17,9 @@ void convertLineasInToTrie(struct TrieNode *root, struct Linea **lineas, int can
 
 void trieInsertLinea(struct TrieNode *root, struct Linea *linea)
 {
-  struct TrieNode *pivot = trieInsertWord(root,GetPalabra(linea));
+  struct TrieNode *pivot = trieInsertWord(root,getPalabra(linea));
 
-  if (GetEsSinonimos(linea) == 1)
+  if (getEsSinonimos(linea) == 1)
     trieAddSinonimo(pivot,getPalabraRel(linea));
   else
     trieAddAntonimo(pivot,getPalabraRel(linea));
