@@ -8,6 +8,8 @@
 #include "./include/shell-mode.h"
 #include "./include/context.h"
 #include "./include/constans.h"
+#include "./lib/include/files-helper.h"
+#include "../tad/include/linea.h"
 
 int main(int argQuantity, char* arg[])
 {
