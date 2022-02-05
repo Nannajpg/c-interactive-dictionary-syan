@@ -1,1 +1,1 @@
-int isArguableCommandInput(char input[]) ;
+int isArguableCommandInput(char input[]);

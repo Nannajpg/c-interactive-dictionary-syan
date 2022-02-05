@@ -9,10 +9,11 @@
 #include "../utils/include/get-inputed.h"
 #include "../utils/include/booleans.h"
 
+#include "../tad/include/context.h"
+
 #include "./lib/include/errors-helper.h"
 #include "./lib/include/get-error.h"
 #include "./include/execute-program.h"
-#include "./include/context.h"
 #include "./include/interactive-mode.h"
 
 void interactiveMode(Context* context);
@@ -37,14 +38,6 @@ void displayErrorWhenHasError(int errorCode) {
 void displayResponseWhenHasResponse(char* response) {
     // Response of Command (If is Neccesary)
     if (strlen(response) > 0) printf("DICT>%s\n", response);
-}
-
-void freeResponseMemory(Context* context) {
-  if (strlen(context->response) > 0) {
-    context->response[0] = '\0';
-    free(context->response);
-    context->response = NULL;
-  }
 }
 
 void continueWhenProgramIsRunning(Context* context) {

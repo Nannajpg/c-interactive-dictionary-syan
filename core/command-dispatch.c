@@ -5,13 +5,15 @@
 #include "../utils/include/booleans.h"
 #include "./include/commands.h"
 
+#include "../tad/include/context.h"
+
 #include "../commands/include/execute-cargar-command.h"
 #include "../commands/include/execute-sinonimos-command.h"
 #include "../commands/include/execute-antonimos-command.h"
 #include "../commands/include/execute-expression-command.h"
 #include "../commands/include/execute-quit-command.h"
 #include "../commands/include/execute-help-command.h"
-#include "./include/context.h"
+
 
 int isCommand(Context* context, char* command);
 

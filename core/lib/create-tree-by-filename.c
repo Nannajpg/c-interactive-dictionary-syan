@@ -6,10 +6,11 @@
 
 #include "../include/commands.h"
 #include "../include/errors.h"
-#include "../include/context.h"
 
 #include "../../tad/include/linea.h"
 #include "../../tad/include/trie-tree.h"
+#include "../../tad/include/context.h"
+
 #include "./include/files-helper.h"
 #include "./include/convert-lineas-in-to-trie.h"
 

@@ -6,8 +6,8 @@
 
 #include "../core/include/commands.h"
 #include "../core/include/errors.h"
-#include "../core/include/context.h"
+#include "../tad/include/context.h"
 
 void executeQuitCommand(Context* context) {
-    context->programIsRunning = FALSE;
+    turnOffProgramExecution(context);
 }

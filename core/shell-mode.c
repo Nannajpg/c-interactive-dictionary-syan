@@ -12,9 +12,10 @@
 #include "./lib/include/errors-helper.h"
 #include "./lib/include/get-error.h"
 #include "./include/execute-program.h"
-#include "./include/context.h"
 #include "./include/shell-mode.h"
 #include "./include/is-arguable-command.h"
+
+#include "../tad/include/context.h"
 
 void shellMode(Context* context, int argQuantity, char* arg[]);
 
@@ -64,5 +65,4 @@ void shellMode(Context* context, int argQuantity, char* arg[]) {
     printf("%s\n", lastResponse);
     free(lastResponse);
   }
-
 }

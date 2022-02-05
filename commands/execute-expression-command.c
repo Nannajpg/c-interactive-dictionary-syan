@@ -6,9 +6,10 @@
 
 #include "../core/include/commands.h"
 #include "../core/include/errors.h"
-#include "../core/include/context.h"
 #include "../core/lib/include/trie-array-helper.h"
 #include "../core/lib/include/regular-expression-for-trie.h"
+
+#include "../tad/include/context.h"
 
 void executeExpressionCommand(Context* context) {
   context->error = NO_ERRORS;

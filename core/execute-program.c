@@ -6,10 +6,11 @@
 #include "./include/constans.h"
 #include "./include/errors.h"
 
+#include "../tad/include/context.h"
+
 #include "../utils/include/string-formating-utils.h"
 #include "./include/get-command-by-input.h"
 #include "./include/command-dispatch.h"
-#include "./include/context.h"
 
 void dispatchCommandWhenNoErrors(Context* context);
 

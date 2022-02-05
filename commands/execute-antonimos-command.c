@@ -6,8 +6,9 @@
 
 #include "../core/include/commands.h"
 #include "../core/include/errors.h"
-#include "../core/include/context.h"
+
 #include "../tad/include/trie-tree.h"
+#include "../tad/include/context.h"
 
 void executeAntonimosCommand(Context* context) {
 
