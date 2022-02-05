@@ -10,7 +10,7 @@
       char* response;
       int programIsRunning;
       int error;
-      int enverioment;
+      int environment;
       struct TrieNode* trieTree;
   } Context;
 

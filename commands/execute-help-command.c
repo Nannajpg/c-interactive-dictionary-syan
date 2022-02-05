@@ -13,7 +13,7 @@ void executeHelpCommand(Context* context) {
     context->error = NO_ERRORS;
     char * texto;
 
-    if (context->enverioment == ENV_SHELL) {
+    if (context->environment == ENV_SHELL) {
       texto = "\n"
       "cargar nombre - carga el diccionario desde el archivo nombre.dic\n"
       "s palabra – busca los sinónimos de la palabra\n"
@@ -22,7 +22,7 @@ void executeHelpCommand(Context* context) {
       "ayuda – muestra esta entrada\n"
       "salir – sale de la aplicación\n"
       "";
-    }else if (context->enverioment == ENV_INTERACTIVE) {
+    }else if (context->environment == ENV_INTERACTIVE) {
       texto = "\n"
       ">cargar nombre - carga el diccionario desde el archivo nombre.dic\n"
       ">s palabra – busca los sinónimos de la palabra\n"

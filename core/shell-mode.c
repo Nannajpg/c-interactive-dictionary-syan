@@ -19,7 +19,7 @@
 void shellMode(Context* context, int argQuantity, char* arg[]);
 
 void runShellMode(Context* context, int argQuantity, char* arg[]) {
-  context->enverioment = ENV_SHELL;
+  context->environment = ENV_SHELL;
   shellMode(context, argQuantity, arg);
 }
 

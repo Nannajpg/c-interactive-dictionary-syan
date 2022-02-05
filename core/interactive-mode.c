@@ -18,7 +18,7 @@
 void interactiveMode(Context* context);
 
 void runInteractiveMode(Context* context) {
-  context->enverioment = ENV_INTERACTIVE;
+  context->environment = ENV_INTERACTIVE;
   interactiveMode(context);
 }
 
