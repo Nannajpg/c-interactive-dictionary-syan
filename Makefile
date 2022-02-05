@@ -6,7 +6,7 @@ programa = 	match-regular-expression.o linea.o trie-tree.o files-helper.o\
 						convert-lineas-in-to-trie.o get-inputed.o string-formating-utils.o\
 						create-tree-by-filename.o migrate-default-trie-dictionary.o\
 						command-dispatch.o get-error.o errors-helper.o get-command-by-input.o\
-						execute-quit-command.o\
+						execute-quit-command.o trie-array-helper.o\
 						execute-sinonimos-command.o execute-antonimos-command.o\
 						execute-expression-command.o\
 						execute-help-command.o execute-cargar-command.o is-arguable-command.o\
