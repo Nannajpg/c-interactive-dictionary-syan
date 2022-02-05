@@ -44,6 +44,10 @@
         return context->response;
       }
 
+      char [129] getInput(Context * context){
+        return context->input;
+      }
+
       int isProgramRunning(Context * context){
         return context->programIsRunning;
       }
@@ -61,7 +65,7 @@
       }
 
     // Setters
-      void setCommand(Context * context, char * value) {
+      void setCommand(Context * context, char * value){
         context->command = value;
       }
 
@@ -69,8 +73,12 @@
         context->commandArgument = value;
       }
 
-      void setResponse(Context * context, char * value){
+      void setSimpleResponse(Context * context, char * value){
         context->response = value;
+      }
+
+      void setInput(Context * context, char value[129]){
+        context->input = value;
       }
 
       void setIsProgramRunning(Context * context, int value){
@@ -90,16 +98,27 @@
       }
 
   // Metodos especiales
-  void freeResponseMemory(Context* context) {
-    if (strlen(context->response) > 0) {
-      context->response[0] = '\0';
-      free(context->response);
-      context->response = NULL;
+    void setResponse(Context * context, int size, char * value){
+        setResponseSize(context, size);
+        snprintf( context->response, size, "%s", value );
     }
-  }
 
-  void turnOffProgramExecution(Context * context) {
-    context->programIsRunning = FALSE;
-  }
+    void freeResponseMemory(Context* context) {
+      if (strlen(context->response) > 0) {
+        context->response[0] = '\0';
+        free(context->response);
+        context->response = NULL;
+      }
+    }
+
+    void turnOffProgramExecution(Context * context) {
+      context->programIsRunning = FALSE;
+    }
+
+    void setResponseSize(Context * context, int size){
+        context->response = (char *) malloc(size);
+    }
+
+
 
 #endif

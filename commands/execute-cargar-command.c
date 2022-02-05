@@ -12,14 +12,14 @@
 #include "../core/lib/include/create-tree-by-filename.h"
 
 void executeCargarCommand(Context* context) {
-  context->error = NO_ERRORS;
-  char * fileName = context->commandArgument;
+  setContextCodeError(context, NO_ERRORS);
+  char * fileName = getArgument(context);
 
-  int errorCode = createTreeByFilename(context->trieTree, fileName);
+  int errorCode = createTreeByFilename(getTrieTree(context), fileName);
   if (errorCode == FILE_NOT_EXISTS_ERROR) {
-    context->error = errorCode;
+    setContextCodeError(context, errorCode);
     return;
   }
 
-  context->response = "Arbol Trie cargado con exito!";
+  setSimpleResponse(context, "Arbol Trie cargado con exito!");
 }

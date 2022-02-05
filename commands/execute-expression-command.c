@@ -12,7 +12,7 @@
 #include "../tad/include/context.h"
 
 void executeExpressionCommand(Context* context) {
-  context->error = NO_ERRORS;
+  setContextCodeError(context, NO_ERRORS);
   struct TrieNode ** arregloNodos = NULL;
   char * str = (char *) malloc(51);
   char * texto = (char *) malloc(2000);
@@ -20,16 +20,15 @@ void executeExpressionCommand(Context* context) {
   if (strlen(texto) > 0) {
     texto[0] = '\0';
   }
+  char * fileName = getArgument(context);
 
-  arregloNodos = trieGetNodesMatchRegex(context->trieTree, arregloNodos, context->commandArgument, str, 0);
+  arregloNodos = trieGetNodesMatchRegex(getTrieTree(context), arregloNodos, fileName, str, 0);
   int cantidadNodos = trieArrayGetLength(arregloNodos);
   char * textoTmp = (char *) malloc(51);
   int wordsWritten = 0;
 
-
-
   if (cantidadNodos <= 0) {
-    context->error = MATCH_NOT_FOUND_ERROR;
+    setContextCodeError(context, MATCH_NOT_FOUND_ERROR);
     return;
   }
 
@@ -58,6 +57,6 @@ void executeExpressionCommand(Context* context) {
     }
   }
 
-  context->response = (char *) malloc(2001);
-  context->response = texto;
+  setResponseSize(context, 2001);
+  setSimpleResponse(context, texto);
 }

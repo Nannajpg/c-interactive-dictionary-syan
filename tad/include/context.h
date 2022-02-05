@@ -30,13 +30,16 @@
     // Setters
     void setCommand(Context * context, char * value);
     void setArgument(Context * context, char * value);
-    void setResponse(Context * context, char * value);
+    void setSimpleResponse(Context * context, char * value);
+    void setInput(Context * context, char * value);
     void setIsProgramRunning(Context * context, int value);
     void setContextCodeError(Context * context, int value);
     void setEnvironment(Context * context, int value);
     void setTrieTree(Context * context, struct TrieNode * root);
 
   // Metodos especiales
+  void setResponseSize(Context * context, int size);
+  void setResponse(Context * context, int size, char * value);
   void freeResponseMemory(Context* context);
   void turnOffProgramExecution(Context * context);
 

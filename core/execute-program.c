@@ -15,23 +15,23 @@
 void dispatchCommandWhenNoErrors(Context* context);
 
 void executeProgram(Context* context) {
-  context->error = NO_ERRORS;
-  context->response = "";
-  context->commandArgument = "";
+  setContextCodeError(context, NO_ERRORS);
+  setSimpleResponse(context, "");
+  setArgument(context, "");
 
-  char* firstSentence = getFirstSentenceBySeparator(context->input, ' ');
-  char* secondSentence = getSecondSentenceBySeparator(context->input, ' ');
+  char* firstSentence = getFirstSentenceBySeparator(getInput(context), ' ');
+  char* secondSentence = getSecondSentenceBySeparator(getInput(context), ' ');
 
-  context->command = getCommandByInput(firstSentence, &context->error);
+  setCommand(context, getCommandByInput(firstSentence, &getContextCodeError(context)));
   if (secondSentence) {
-    context->commandArgument = secondSentence;
+    setArgument(context, secondSentence);
   }
 
   dispatchCommandWhenNoErrors(context);
 }
 
 void dispatchCommandWhenNoErrors(Context* context) {
-  if (context->error == NO_ERRORS) {
+  if (getContextCodeError(context) == NO_ERRORS) {
     commandDispatch(context);
   }
 }

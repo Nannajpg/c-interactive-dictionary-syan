@@ -27,6 +27,6 @@ void commandDispatch(Context* context) {
 }
 
 int isCommand(Context* context, char* command) {
-  if (strcmp(context->command, command) == 0) return TRUE;
+  if (strcmp(getCommand(context), command) == 0) return TRUE;
   return FALSE;
 }

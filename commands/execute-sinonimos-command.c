@@ -10,10 +10,10 @@
 
 void executeSinonimosCommand(Context* context) {
 
-  context->error = NO_ERRORS;
+  setContextCodeError(context, NO_ERRORS);
 
-  char *palabra = context->commandArgument;
-  struct TrieNode *root = context->trieTree;
+  char *palabra = getArgument(context);
+  struct TrieNode *root = getTrieTree(context);
   struct TrieNode *result = trieSearchWord(root, palabra);
   char * texto = (char *) malloc(2000);
   // Limpiamos la basura de texto que puede venir de antemano
@@ -24,7 +24,7 @@ void executeSinonimosCommand(Context* context) {
   char * textoTmp = (char *) malloc(51);
 
   if (result == NULL){
-    context->error = WORD_NOT_FOUND_ERROR;
+    setContextCodeError(context, WORD_NOT_FOUND_ERROR);
     return;
   }
 
@@ -40,6 +40,5 @@ void executeSinonimosCommand(Context* context) {
       strcat(texto, textoTmp);
   }
 
-  context->response = (char *) malloc(2000);
-  snprintf( context->response, 2000, "%s", texto );
+  setResponse(context, 2000, texto);
 }

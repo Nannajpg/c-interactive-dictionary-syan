@@ -8,7 +8,7 @@
 
 void migrateDefaultTrieDictionary(Context* context)
 {
-  int errorCode = createTreeByFilename(context->trieTree, "default.dic");
+  int errorCode = createTreeByFilename(getTrieTree(context), "default.dic");
   if (errorCode == FILE_NOT_EXISTS_ERROR) {
     printf("Error al cargar diccionario por defecto\n");
     return;

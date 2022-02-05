@@ -10,10 +10,10 @@
 #include "../tad/include/context.h"
 
 void executeHelpCommand(Context* context) {
-    context->error = NO_ERRORS;
+    setContextCodeError(context, NO_ERRORS);
     char * texto;
 
-    if (context->environment == ENV_SHELL) {
+    if (getEnvironment(context) == ENV_SHELL) {
       texto = "\n"
       "cargar nombre - carga el diccionario desde el archivo nombre.dic\n"
       "s palabra – busca los sinónimos de la palabra\n"
@@ -22,7 +22,7 @@ void executeHelpCommand(Context* context) {
       "ayuda – muestra esta entrada\n"
       "salir – sale de la aplicación\n"
       "";
-    }else if (context->environment == ENV_INTERACTIVE) {
+    }else if (getEnvironment(context) == ENV_INTERACTIVE) {
       texto = "\n"
       ">cargar nombre - carga el diccionario desde el archivo nombre.dic\n"
       ">s palabra – busca los sinónimos de la palabra\n"
@@ -33,6 +33,5 @@ void executeHelpCommand(Context* context) {
       ">";
     }
 
-    context->response = (char *) malloc(400);
-    snprintf( context->response, 401, "%s", texto );
+    setResponse(context, 400, texto);
 }

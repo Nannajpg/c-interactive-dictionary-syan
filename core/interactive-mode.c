@@ -19,12 +19,12 @@
 void interactiveMode(Context* context);
 
 void runInteractiveMode(Context* context) {
-  context->environment = ENV_INTERACTIVE;
+  setEnvironment(context, ENV_INTERACTIVE);
   interactiveMode(context);
 }
 
 void displayErrorWhenHasMaxLengthError(Context* context) {
-  if(context->error == INPUT_MAX_LENGTH_ERROR)
+  if(getContextCodeError(context) == INPUT_MAX_LENGTH_ERROR)
       printf("Error: se ha ingresado mas caracteres de los permitidos\n      solo se tomaran caracteres hasta el limite permitido (%d)\n", MAX_LENGTH);
 }
 
@@ -43,23 +43,23 @@ void displayResponseWhenHasResponse(char* response) {
 void continueWhenProgramIsRunning(Context* context) {
   // Vuelve a ejecutar el interactiveModeExecution si es que el
   // programa sigue corriende
-  if (context->programIsRunning == TRUE)
+  if (isProgramRunning(context) == TRUE)
     interactiveMode(context);
 }
 
 void displayExecutionOutputs(Context* context) {
-  if (isInvalidCommandError(context->error)) {
+  if (isInvalidCommandError(getContextCodeError(context))) {
     printf("DICT>Accion invalida.\n");
   }else{
-    displayErrorWhenHasError(context->error);
-    displayResponseWhenHasResponse(context->response);
+    displayErrorWhenHasError(getContextCodeError(context));
+    displayResponseWhenHasResponse(getResponse(context));
   }
 }
 
 void getAndResolveInput(Context* context) {
   printf("DICT>");
 
-  getInputed(context->input, &context->error);
+  getInputed(getInput(context), &getContextCodeError(context));
 
   displayErrorWhenHasMaxLengthError(context);
 }

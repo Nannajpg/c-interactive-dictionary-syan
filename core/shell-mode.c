@@ -20,7 +20,7 @@
 void shellMode(Context* context, int argQuantity, char* arg[]);
 
 void runShellMode(Context* context, int argQuantity, char* arg[]) {
-  context->environment = ENV_SHELL;
+  setEnvironment(context, ENV_SHELL);
   shellMode(context, argQuantity, arg);
 }
 
@@ -31,31 +31,31 @@ void shellMode(Context* context, int argQuantity, char* arg[]) {
 
   for (int i = 1; i < argQuantity; i++) {
 
-    strcpy(context->input, arg[i]);
+    strcpy(getInput(context), arg[i]);
     if (isArguableCommandInput(arg[i]) && (i + 1) < argQuantity) {
-      strcat(context->input, " ");
+      strcat(getInput(context), " ");
       i++;
-      strcat(context->input, arg[i]);
+      strcat(getInput(context), arg[i]);
     }
 
     executeProgram(context);
 
-    if (isInvalidCommandError(context->error)) {
-      printf("Comando o accion invalida '%s' en el argumento %i\n", context->input, i);
+    if (isInvalidCommandError(getContextCodeError(context))) {
+      printf("Comando o accion invalida '%s' en el argumento %i\n", getInput(context), i);
       hasError = TRUE;
       break;
     }else{
-      errorDisplay = GetError(context->error);
+      errorDisplay = GetError(getContextCodeError(context));
       if (strlen(errorDisplay) > 0) {
         hasError = TRUE;
-        printf("Error en argumento '%s' numero %i: %s\n", context->input, i, errorDisplay);
+        printf("Error en argumento '%s' numero %i: %s\n", getInput(context), i, errorDisplay);
         break;
       }
 
-      if (strlen(context->response) > 0) lastResponse = context->response;
+      if (strlen(getResponse(context) > 0)) lastResponse = getResponse(context);
     }
 
-    if (!context->programIsRunning) {
+    if (!isProgramRunning(context)) {
       hasError = TRUE;
       break;
     }
