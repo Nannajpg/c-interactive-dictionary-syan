@@ -5,6 +5,6 @@
 
   int trieArrayGetLength(struct TrieNode ** trieArray);
 
-  void trieArrayAddNodo(struct TrieNode ** trieArray, struct TrieNode *trieNode);
+  struct TrieNode ** trieArrayAddNodo(struct TrieNode ** trieArray, struct TrieNode *trieNode);
 
 #endif

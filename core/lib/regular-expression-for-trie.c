@@ -7,15 +7,14 @@
 #include "../../utils/include/match-regular-expression.h"
 
 // function to display the content of Trie
-void display(struct TrieNode* root, struct TrieNode ** arregloNodos, char* expression, char* str, int level);
-void display(struct TrieNode* root, struct TrieNode ** arregloNodos, char* expression, char* str, int level)
+struct TrieNode ** display(struct TrieNode* root, struct TrieNode ** arregloNodos, char* expression, char* str, int level);
+struct TrieNode ** display(struct TrieNode* root, struct TrieNode ** arregloNodos, char* expression, char* str, int level)
 {
     if (trieIsWord(root))
     {
         str[level] = '\0';
         if (matchRegularExpression(expression, str)){
-                printf(str);
-                trieArrayAddNodo(arregloNodos, root);
+            arregloNodos = trieArrayAddNodo(arregloNodos, root);
        }
     }
 
@@ -25,7 +24,8 @@ void display(struct TrieNode* root, struct TrieNode ** arregloNodos, char* expre
         if (root->children[i])
         {
             str[level] = i + 'a';
-            display(root->children[i], arregloNodos, expression, str, level + 1);
+            arregloNodos = display(root->children[i], arregloNodos, expression, str, level + 1);
         }
     }
+    return arregloNodos;
 }
