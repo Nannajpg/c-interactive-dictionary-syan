@@ -8,16 +8,19 @@
 #include "../core/include/errors.h"
 #include "../core/include/context.h"
 
-void executeCargarCommand(Context* context) {
-  /*
-    context->commandArgument  <-- La palabra (nombre del archivo)
-    context->response         <-- Donde enviar la respuesta
-    context->trieTree         <-- El arbol :)
-    context->error            <-- Donde enviar errores
+#include "../tad/include/trie-tree.h"
+#include "../core/lib/include/create-tree-by-filename.h"
 
-    1. Validar que el archivo exista
-    2. Funcion para cargar el diccionario por el nombre del archivo (Anna)
-    3. Enviar el diccionario a la funcion convertidora en arbol (Jesus)
-    4. Sustituir el context->trieTree actual por el nuevo context->trieTree
-  */
+void executeCargarCommand(Context* context) {
+  char * fileName = context->commandArgument;
+
+  int errorCode = createTreeByFilename(context->trieTree, fileName);
+  if (errorCode == FILE_NOT_EXISTS_ERROR) {
+    context->error = errorCode;
+    return;
+  }
+
+  char * texto = "Arbol Trie cargado con exito!";
+  context->response = (char *) malloc(200);
+  snprintf( context->response, 201, "%s", texto );
 }

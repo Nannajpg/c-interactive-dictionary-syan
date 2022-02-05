@@ -5,7 +5,7 @@
 
 #include "./include/trie-tree.h"
 
-struct TrieNode *trieCreateNode(void);
+struct TrieNode * trieCreateNode(void);
 
 /*METODOS BASICOS*/
 
@@ -94,7 +94,7 @@ struct TrieNode *trieCreateNode(void)
 
 // si no hay nada en el espacio se inserta la letra
 // si la letra es prefijo del nodo se inserta en la siguiente hoja
-void trieInsertWord(struct TrieNode *root, const char *word)
+struct TrieNode *trieInsertWord(struct TrieNode *root, const char *word)
 {
     int level;
     int length = strlen(word);
@@ -112,6 +112,7 @@ void trieInsertWord(struct TrieNode *root, const char *word)
     }
     // Se marca el nodo como una palabra
     pivot->isWord = 1;
+    return pivot;
 
     // Se agregan sus sinonimos y antonimos (ESTO ES DE PRUEBA)
     /*trieAddAntonimo(pivot, "hola");
