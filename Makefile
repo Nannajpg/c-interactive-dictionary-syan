@@ -7,8 +7,8 @@ programa = 	match-regular-expression.o linea.o trie-tree.o files-helper.o\
 						create-tree-by-filename.o migrate-default-trie-dictionary.o\
 						command-dispatch.o get-error.o errors-helper.o get-command-by-input.o\
 						execute-quit-command.o trie-array-helper.o\
-						execute-sinonimos-command.o execute-antonimos-command.o\
-						execute-expression-command.o\
+						execute-sinonimos-command.o execute-antonimos-command.o \
+						regular-expression-for-trie.o execute-expression-command.o\
 						execute-help-command.o execute-cargar-command.o is-arguable-command.o\
 						execute-program.o\
 						interactive-mode.o shell-mode.o create-program-context.o main.o

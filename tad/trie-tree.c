@@ -39,6 +39,11 @@ struct TrieNode * trieCreateNode(void);
       return trieNode->antonimos;
   }
 
+  int trieIsWord(struct TrieNode *trieNode)
+  {
+      return trieNode->isWord;
+  }
+
   void trieAddSinonimo(struct TrieNode *trieNode, char* newSinonimo)
   {
       int currentSize = trieGetSinonimosSize(trieNode);
