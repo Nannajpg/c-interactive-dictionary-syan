@@ -1,6 +1,6 @@
-# C Interactive Calculator (WIP)
+# C Interactive Dictionary SYAN
 
-Diccionario interactivo de sinonimos y antonimos en C, proyecto Universitario para el curso de "Algoritmos y programacion 2"
+Diccionario interactivo de sinonimos y antonimos en C, proyecto Universitario para el curso de "Algoritmos y programacion 2" basado en arboles TRIE
 
 Desarrollado como proyecto de Algoritmos y Programacion para la universidad UCAB de Ciudad Guayana 🔰
 
@@ -8,7 +8,7 @@ Desarrollado como proyecto de Algoritmos y Programacion para la universidad UCAB
 
 Si tienes instalado git en tu ordenador abre la consola y escribe
 ```bash
-git clone https://github.com/Hector1567XD/c-interactive-calculator.git
+git clone https://github.com/Nannajpg/c-interactive-dictionary-syan.git
 ```
 De esta forma podras descargar el proyecto en tu computadora!
 
