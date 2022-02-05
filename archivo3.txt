@@ -1,5 +1,5 @@
 s Orate Loco
-s Raro Extraño
+s Raro Extraño 
 s Listo Inteligente
 a Pobre Rico
 a Tonto Listo
