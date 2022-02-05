@@ -11,6 +11,7 @@
 #include "../../tad/include/linea.h"
 #include "../../tad/include/trie-tree.h"
 #include "./include/files-helper.h"
+#include "./include/convert-lineas-in-to-trie.h"
 
 int createTreeByFilename(struct TrieNode * trieTree, char * fileName) {
   if (!existeArchivo(fileName)) {
@@ -20,6 +21,6 @@ int createTreeByFilename(struct TrieNode * trieTree, char * fileName) {
   int cantidadLineas = contarLineasArchivo(fileName);
   struct Linea ** lineas = cargarArchivoPorNombre(fileName);
 
-  //convertLineasIntoTrie(context->trieTree, lineas, cantidadLineas);
+  convertLineasInToTrie(context->trieTree, lineas, cantidadLineas);
   return NO_ERRORS;
 }

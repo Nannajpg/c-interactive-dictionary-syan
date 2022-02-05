@@ -5,9 +5,11 @@
 #include "../../tad/include/linea.h"
 #include "../../tad/include/trie-tree.h"
 
+void trieInsertLinea(struct TrieNode *root, struct Linea *linea);
+
 void convertLineasInToTrie(struct TrieNode *root, struct Linea **lineas, int cantidadLineas)
 {
-  int = 0;
+   int i = 0;
    for (i = 0; i < cantidadLineas; i++) {
         if (lineas[i]) trieInsertLinea(root, lineas[i]);
    }
