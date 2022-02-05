@@ -39,6 +39,11 @@ struct TrieNode * trieCreateNode(void);
       return trieNode->antonimos;
   }
 
+  int trieIsWord(struct TrieNode *trieNode)
+  {
+      return trieNode->isWord;
+  }
+
   int areStringInArray(char ** stringArray, int arraySize, char * cadena) {
     for (int i = 0; i < arraySize; i ++) {
       if (strcmp(stringArray[i], cadena) == 0) {

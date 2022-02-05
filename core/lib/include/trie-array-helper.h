@@ -1,9 +1,10 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <ctype.h>
-#include "../../tad/include/trie-tree.h"
+#ifndef trie_array_helper_h
+#define trie_array_helper_h
 
-int trieArrayGetLength(struct TrieNode ** trieArray);
+  #include "../../../tad/include/trie-tree.h"
 
-void trieArrayAddNodo(struct TrieNode ** trieArray, struct TrieNode *trieNode);
+  int trieArrayGetLength(struct TrieNode ** trieArray);
+
+  struct TrieNode ** trieArrayAddNodo(struct TrieNode ** trieArray, struct TrieNode *trieNode);
+
+#endif

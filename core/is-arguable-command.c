@@ -12,5 +12,8 @@ int isArguableCommandInput(char input[]) {
     if (strcmp(input, SINONIMOS_COMMAND) == 0) return TRUE;
     if (strcmp(input, ANTONIMOS_COMMAND) == 0) return TRUE;
     if (strcmp(input, EXPRESSION_COMMAND) == 0) return TRUE;
+    if (strcmp(input, SINONIMOS_LARGE_COMMAND) == 0) return TRUE;
+    if (strcmp(input, ANTONIMOS_LARGE_COMMAND) == 0) return TRUE;
+    if (strcmp(input, EXPRESSION_LARGE_COMMAND) == 0) return TRUE;
     return FALSE;
 }

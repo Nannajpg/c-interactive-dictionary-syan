@@ -19,7 +19,7 @@
 void shellMode(Context* context, int argQuantity, char* arg[]);
 
 void runShellMode(Context* context, int argQuantity, char* arg[]) {
-  context->enverioment = ENV_SHELL;
+  context->environment = ENV_SHELL;
   shellMode(context, argQuantity, arg);
 }
 
@@ -39,7 +39,7 @@ void shellMode(Context* context, int argQuantity, char* arg[]) {
 
     executeProgram(context);
 
-    if (isInvalidCommandError(INVALID_COMMAND_ERROR)) {
+    if (isInvalidCommandError(context->error)) {
       printf("Comando o accion invalida '%s' en el argumento %i\n", context->input, i);
       hasError = TRUE;
       break;

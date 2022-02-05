@@ -12,6 +12,7 @@
 #include "../core/lib/include/create-tree-by-filename.h"
 
 void executeCargarCommand(Context* context) {
+  context->error = NO_ERRORS;
   char * fileName = context->commandArgument;
 
   int errorCode = createTreeByFilename(context->trieTree, fileName);
@@ -20,7 +21,5 @@ void executeCargarCommand(Context* context) {
     return;
   }
 
-  char * texto = "Arbol Trie cargado con exito!";
-  context->response = (char *) malloc(200);
-  snprintf( context->response, 201, "%s", texto );
+  context->response = "Arbol Trie cargado con exito!";
 }
