@@ -59,6 +59,18 @@ struct Linea ** cargarArchivoPorNombre(char fname[]) {
    return cargarArchivo(fname, size, num);
 };
 
+int getSpacesInString(char * word) {
+  int spaces = 0;
+  for(int i = 0; word[i] != '\0'; i++)
+  {
+      if (word[i] == ' ')
+      {
+           spaces++;
+      }
+  }
+  return spaces;
+}
+
 struct Linea ** cargarArchivo(char fname[],long int size, int num) {
     FILE *archivo = fopen(fname,"r");
     char c[size];
@@ -74,14 +86,18 @@ struct Linea ** cargarArchivo(char fname[],long int size, int num) {
         while(!feof(archivo)) {
             fgets(c,65,archivo);
                 c[strcspn(c, "\r\n")] = 0;
-                    if(c[0] == 'S') {
-
-                        listaLineas[i] = crearLinea(getFirstSentenceBySeparator((c+2),' '),getSecondSentenceBySeparator((c+2),' '), 1);
+                    //printf("-->%s (%d)", c, getSpacesInString(c));
+                    if (getSpacesInString(c) == 2 && (c[0] == 'S' || c[0] == 'A')) {
+                      //printf(" Added!");
+                      if(c[0] == 'S') {
+                          listaLineas[i] = crearLinea(getFirstSentenceBySeparator((c+2),' '),getSecondSentenceBySeparator((c+2),' '), 1);
+                      }
+                      else if(c[0] == 'A'){
+                           listaLineas[i] = crearLinea(getFirstSentenceBySeparator((c+2),' '),getSecondSentenceBySeparator((c+2),' '), 0);
+                      }
+                      i++;
                     }
-                    else if(c[0] == 'A'){
-                         listaLineas[i] = crearLinea(getFirstSentenceBySeparator((c+2),' '),getSecondSentenceBySeparator((c+2),' '), 0);
-                    }
-                    i++;
+                    //printf("\n");
 
         }listaLineas[i] = NULL;
     }
