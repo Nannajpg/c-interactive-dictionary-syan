@@ -14,7 +14,7 @@ int trieArrayGetLength(struct TrieNode ** trieArray)
     return arrayLen;
 }
 
-void trieArrayAddNodo(struct TrieNode ** trieArray, struct TrieNode *trieNode)
+void trieArrayAddNodo(struct TrieNode ** trieArray, struct TrieNode * trieNode)
 {
     int currentSize = trieArrayGetLength(trieArray);
     if (currentSize > 0) {
@@ -22,6 +22,6 @@ void trieArrayAddNodo(struct TrieNode ** trieArray, struct TrieNode *trieNode)
     }else{
       trieArray = malloc(sizeof(trieArray) * 2);
     }
-    trieNode[currentSize] = trieNode;
-    trieNode[currentSize+1] = NULL;
+    trieArray[currentSize] = trieNode;
+    trieArray[currentSize+1] = NULL;
 }
