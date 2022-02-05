@@ -10,6 +10,7 @@
 #include "../core/include/context.h"
 
 void executeHelpCommand(Context* context) {
+    context->error = NO_ERRORS;
     char * texto;
 
     if (context->enverioment == ENV_SHELL) {

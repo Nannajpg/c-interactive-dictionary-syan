@@ -141,7 +141,7 @@ struct TrieNode* trieSearchWord(struct TrieNode *root, const char *word)
 
     for (level = 0; level < length; level++)
     {
-        index = CHAR_TO_INDEX(tolower(word[level]));
+        index = CHAR_TO_INDEX(tolower(word[level])); 
 
         if (!pivot->children[index])
             return 0;
