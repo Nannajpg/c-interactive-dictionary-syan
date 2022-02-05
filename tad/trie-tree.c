@@ -4,6 +4,7 @@
 #include <ctype.h>
 
 #include "./include/trie-tree.h"
+#include "../utils/include/string-formating-utils.h"
 
 struct TrieNode * trieCreateNode(void);
 
@@ -114,14 +115,57 @@ struct TrieNode *trieCreateNode(void)
     return pNode;
 }
 
+// Char a entero
+int charToInt(char letra) {
+  return (int) letra - 48;
+}
+
 // Eliminar tilde de caracter
 char removeTilde(char vocal) {
-  char vocalesCon[]="áéíóúÀÈÌÒÙ";
-  char vocalesSin[]="aeiouAEIOU";
+  int vocalesConNumber[34]={
+    -175,
+    -176,
+    -173,
+    -174,
+    -169,
+    -143,
+    -144,
+    -141,
+    -142,
+    -137,
+    -167,
+    -166,
+    -135,
+    -134,
+    -135,
+    -136,
+    -163,
+    -131,
+    -132,
+    -159,
+    -157,
+    -156,
+    -155,
+    -127,
+    -125,
+    -126,
+    -124,
+    -123,
+    -150,
+    -148,
+    -118,
+    -119,
+    -116,
+    -119,
+  };
 
-  for (int i=0;i<10;i++){
-      if (vocalesCon[i]==vocal)
-        return vocalesSin[i];
+  //AAAACaaaacEEeeeeIiiNOOOnooooUUuuuu
+  char vocalesSin[34]="AAAACaaaacEEeeeeIiiNOOOnooooUUuuuu";
+  for (int i=0;i<34;i++){
+    int vocalInt = charToInt(vocal);
+    if (vocalesConNumber[i] == vocalInt) {
+      return vocalesSin[i];
+    }
   }
 
   return vocal;
@@ -136,14 +180,20 @@ struct TrieNode *trieInsertWord(struct TrieNode *root, const char *word)
     int index;
 
     struct TrieNode *pivot = root;
-
+    //printf("%s\n", word);
     for (level = 0; level < length; level++)
     {
-        index = CHAR_TO_INDEX(tolower(removeTilde(word[level])));
-        if (!pivot->children[index])
-            pivot->children[index] = trieCreateNode();
+        index = CHAR_TO_INDEX(removeTilde(tolower(word[level])));
 
-        pivot = pivot->children[index];
+        //printf("%c --> %c ll %d\n", word[level], removeTilde(tolower(word[level])), index);
+        //printf("%d\n", index);
+
+        if (index >= 0 && index <= ALPHABET_SIZE) {
+          if (!pivot->children[index])
+              pivot->children[index] = trieCreateNode();
+
+          pivot = pivot->children[index];
+        }
     }
     // Se marca el nodo como una palabra
     pivot->isWord = 1;
@@ -157,15 +207,20 @@ struct TrieNode* trieSearchWord(struct TrieNode *root, const char *word)
     int length = strlen(word);
     int index;
     struct TrieNode *pivot = root;
+    //printf("TO SEARCH %s\n", word);
 
     for (level = 0; level < length; level++)
     {
-        index = CHAR_TO_INDEX(tolower(removeTilde(word[level])));
+        //printf("%c\n", word[level]);
+        index = CHAR_TO_INDEX(removeTilde(tolower(word[level])));
+        //printf("%d\n", index);
 
-        if (!pivot->children[index])
-            return 0;
+        if (index >= 0 && index <= ALPHABET_SIZE) {
+          if (!pivot->children[index])
+              return 0;
 
-        pivot = pivot->children[index];
+          pivot = pivot->children[index];
+        }
     }
 
     if (pivot->isWord) return pivot;
