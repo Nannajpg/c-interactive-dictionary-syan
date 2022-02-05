@@ -114,6 +114,19 @@ struct TrieNode *trieCreateNode(void)
     return pNode;
 }
 
+// Eliminar tilde de caracter
+char removeTilde(char vocal) {
+  char vocalesCon[]="áéíóúÀÈÌÒÙ";
+  char vocalesSin[]="aeiouAEIOU";
+
+  for (int i=0;i<10;i++){
+      if (vocalesCon[i]==vocal)
+        return vocalesSin[i];
+  }
+
+  return vocal;
+}
+
 // si no hay nada en el espacio se inserta la letra
 // si la letra es prefijo del nodo se inserta en la siguiente hoja
 struct TrieNode *trieInsertWord(struct TrieNode *root, const char *word)
@@ -126,7 +139,7 @@ struct TrieNode *trieInsertWord(struct TrieNode *root, const char *word)
 
     for (level = 0; level < length; level++)
     {
-        index = CHAR_TO_INDEX(tolower(word[level]));
+        index = CHAR_TO_INDEX(tolower(removeTilde(word[level])));
         if (!pivot->children[index])
             pivot->children[index] = trieCreateNode();
 
@@ -147,7 +160,7 @@ struct TrieNode* trieSearchWord(struct TrieNode *root, const char *word)
 
     for (level = 0; level < length; level++)
     {
-        index = CHAR_TO_INDEX(tolower(word[level]));
+        index = CHAR_TO_INDEX(tolower(removeTilde(word[level])));
 
         if (!pivot->children[index])
             return 0;
