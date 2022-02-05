@@ -4,7 +4,7 @@
   #include "./trie-tree.h"
 
   typedef struct context {
-      char input[129];
+      char* input;
       char* command;
       char* commandArgument;
       char* response;
@@ -22,11 +22,13 @@
     char *getCommand(Context * context);
     char *getArgument(Context * context);
     char *getResponse(Context * context);
+    char * getInput(Context * context);
     int isProgramRunning(Context * context);
     int getContextCodeError(Context * context);
+    int * getContextErrorReference(Context * context);
     int getEnvironment(Context * context);
     struct TrieNode * getTrieTree(Context * context);
-    
+
     // Setters
     void setCommand(Context * context, char * value);
     void setArgument(Context * context, char * value);

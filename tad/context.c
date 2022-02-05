@@ -11,7 +11,7 @@
 #include "../core/include/commands.h"
 #include "../core/include/constans.h"
 #include "../core/include/errors.h"
-#include "../core/include/context.h"
+#include "./include/context.h"
 //
 #include "./include/trie-tree.h"
 #include "./include/context.h"
@@ -20,6 +20,7 @@
   {
       Context* context = (Context *) malloc(sizeof(Context));
       context->command = NO_COMMAND;
+      context->input = (char*) malloc(sizeof(char) * 5000);
       context->commandArgument = "";
       context->response = "";
       context->programIsRunning = TRUE;
@@ -44,7 +45,7 @@
         return context->response;
       }
 
-      char [129] getInput(Context * context){
+      char * getInput(Context * context){
         return context->input;
       }
 
@@ -56,10 +57,14 @@
         return context->error;
       }
 
+      int * getContextErrorReference(Context * context){
+        return &context->error;
+      }
+
       int getEnvironment(Context * context){
         return context->environment;
       }
-      
+
       struct TrieNode * getTrieTree(Context * context){
         return context->trieTree;
       }
@@ -77,7 +82,7 @@
         context->response = value;
       }
 
-      void setInput(Context * context, char value[129]){
+      void setInput(Context * context, char * value){
         context->input = value;
       }
 

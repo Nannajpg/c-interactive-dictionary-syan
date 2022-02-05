@@ -19,10 +19,14 @@ void executeProgram(Context* context) {
   setSimpleResponse(context, "");
   setArgument(context, "");
 
-  char* firstSentence = getFirstSentenceBySeparator(getInput(context), ' ');
-  char* secondSentence = getSecondSentenceBySeparator(getInput(context), ' ');
+  char* firstSentence = "";
+  char* secondSentence = NULL;
+  char* input = getInput(context);
 
-  setCommand(context, getCommandByInput(firstSentence, &getContextCodeError(context)));
+  firstSentence = getFirstSentenceBySeparator(getInput(context), ' ');
+  secondSentence = getSecondSentenceBySeparator(getInput(context), ' ');
+
+  setCommand(context, getCommandByInput(firstSentence, getContextErrorReference(context)));
   if (secondSentence) {
     setArgument(context, secondSentence);
   }

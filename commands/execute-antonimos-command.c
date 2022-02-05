@@ -14,7 +14,7 @@ void executeAntonimosCommand(Context* context) {
 
   setContextCodeError(context, NO_ERRORS);
 
-  char *palabra = setCommand(context, commandArgument);
+  char *palabra = getArgument(context);
   struct TrieNode *root = getTrieTree(context);
   struct TrieNode *result = trieSearchWord(root, palabra);
   char * texto = (char *) malloc(2000);

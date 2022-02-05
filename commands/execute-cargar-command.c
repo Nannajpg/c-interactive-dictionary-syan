@@ -21,5 +21,7 @@ void executeCargarCommand(Context* context) {
     return;
   }
 
-  setSimpleResponse(context, "Arbol Trie cargado con exito!");
+  char * texto = (char *) malloc(400);
+  texto = "Arbol Trie cargado con exito!";
+  setResponse(context, 400, texto);
 }

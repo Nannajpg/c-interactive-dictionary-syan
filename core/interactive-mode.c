@@ -59,7 +59,7 @@ void displayExecutionOutputs(Context* context) {
 void getAndResolveInput(Context* context) {
   printf("DICT>");
 
-  getInputed(getInput(context), &getContextCodeError(context));
+  setInput(context, getInputed(getContextErrorReference(context)));
 
   displayErrorWhenHasMaxLengthError(context);
 }
