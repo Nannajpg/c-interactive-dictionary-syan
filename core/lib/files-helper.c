@@ -87,12 +87,12 @@ struct Linea ** cargarArchivo(char fname[],long int size, int num) {
             fgets(c,65,archivo);
                 c[strcspn(c, "\r\n")] = 0;
                     //printf("-->%s (%d)", c, getSpacesInString(c));
-                    if (getSpacesInString(c) == 2 && (c[0] == 'S' || c[0] == 'A')) {
+                    if (getSpacesInString(c) == 2 && (c[0] == 'S' || c[0] == 'A' || c[0] == 's' || c[0] == 'a')) {
                       //printf(" Added!");
-                      if(c[0] == 'S') {
+                      if(c[0] == 'S' || c[0] == 's') {
                           listaLineas[i] = crearLinea(getFirstSentenceBySeparator((c+2),' '),getSecondSentenceBySeparator((c+2),' '), 1);
                       }
-                      else if(c[0] == 'A'){
+                      else if(c[0] == 'A' || c[0] == 'a'){
                            listaLineas[i] = crearLinea(getFirstSentenceBySeparator((c+2),' '),getSecondSentenceBySeparator((c+2),' '), 0);
                       }
                       i++;

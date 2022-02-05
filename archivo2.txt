@@ -2,6 +2,10 @@ S Bajo Pequeño Pucha
 S
 S Bajo
 
+S Bajo Menudo
+a salida saludo
+s bonito bello
+a bonito feo
 H Bajo Menudo
 S Bajo Menudo
 S Bajo Chico
