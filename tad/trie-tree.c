@@ -57,6 +57,10 @@ struct TrieNode * trieCreateNode(void);
   {
       int currentSize = trieGetSinonimosSize(trieNode);
       if (currentSize > 0) {
+        if (areStringInArray(trieNode->sinonimos, currentSize, newSinonimo)) return;
+      }
+
+      if (currentSize > 0) {
         trieNode->sinonimos = realloc(trieNode->sinonimos, sizeof(trieNode->sinonimos) * (currentSize+2));
       }else{
         trieNode->sinonimos = malloc(sizeof(trieNode->sinonimos) * 2);
@@ -68,6 +72,10 @@ struct TrieNode * trieCreateNode(void);
   void trieAddAntonimo(struct TrieNode *trieNode, char* newAntonimo)
   {
     int currentSize = trieGetAntonimosSize(trieNode);
+    if (currentSize > 0) {
+      if (areStringInArray(trieNode->antonimos, currentSize, newAntonimo)) return;
+    }
+
     if (currentSize > 0) {
       trieNode->antonimos = realloc(trieNode->antonimos, sizeof(trieNode->antonimos) * (currentSize+2));
     }else{
@@ -127,17 +135,6 @@ struct TrieNode *trieInsertWord(struct TrieNode *root, const char *word)
     // Se marca el nodo como una palabra
     pivot->isWord = 1;
     return pivot;
-
-    // Se agregan sus sinonimos y antonimos (ESTO ES DE PRUEBA)
-    /*trieAddAntonimo(pivot, "hola");
-    trieAddAntonimo(pivot, "uwu");
-
-    trieAddSinonimo(pivot, "prueba");
-    trieAddSinonimo(pivot, "macho");
-    trieAddSinonimo(pivot, "pecho");
-    trieAddSinonimo(pivot, "pelkudo");
-    trieAddSinonimo(pivot, "asd");
-    trieAddSinonimo(pivot, "refresco");*/
 }
 
 // Search regresa 1 si la palabra esta presente en el arbol trie
