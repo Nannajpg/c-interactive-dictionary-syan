@@ -52,7 +52,7 @@ void shellMode(Context* context, int argQuantity, char* arg[]) {
         break;
       }
 
-      if (strlen(getResponse(context) > 0)) lastResponse = getResponse(context);
+      if (strlen(getResponse(context)) > 0) lastResponse = getResponse(context);
     }
 
     if (!isProgramRunning(context)) {
