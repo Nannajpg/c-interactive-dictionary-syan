@@ -15,12 +15,24 @@ void convertLineasInToTrie(struct TrieNode *root, struct Linea **lineas, int can
    }
 }
 
+void trieAddSinonimoOrAntonimo(struct TrieNode * nodo, int esSinonimo, char * palabra) {
+  if (esSinonimo)
+    trieAddSinonimo(nodo,palabra);
+  else
+    trieAddAntonimo(nodo,palabra);
+}
+
 void trieInsertLinea(struct TrieNode *root, struct Linea *linea)
 {
-  struct TrieNode *pivot = trieInsertWord(root,getPalabra(linea));
+  char * palabra = getPalabra(linea);
+  char * palabraRel = getPalabraRel(linea);
+  int esSinonimo = getEsSinonimos(linea);
 
-  if (getEsSinonimos(linea) == 1)
-    trieAddSinonimo(pivot,getPalabraRel(linea));
-  else
-    trieAddAntonimo(pivot,getPalabraRel(linea));
+  struct TrieNode *pivot = trieInsertWord(root,palabra);
+
+  trieAddSinonimoOrAntonimo(pivot, esSinonimo, palabraRel);
+
+  struct TrieNode *pivotRel = trieInsertWord(root,palabraRel);
+
+  trieAddSinonimoOrAntonimo(pivotRel, esSinonimo, palabra);
 }

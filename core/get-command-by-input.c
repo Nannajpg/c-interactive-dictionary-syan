@@ -14,6 +14,9 @@ int isValidInput(char input[]) {
     if (strcmp(input, EXPRESSION_COMMAND) == 0) return TRUE;
     if (strcmp(input, AYUDA_COMMAND) == 0) return TRUE;
     if (strcmp(input, QUIT_COMMAND) == 0) return TRUE;
+    if (strcmp(input, SINONIMOS_LARGE_COMMAND) == 0) return TRUE;
+    if (strcmp(input, ANTONIMOS_LARGE_COMMAND) == 0) return TRUE;
+    if (strcmp(input, EXPRESSION_LARGE_COMMAND) == 0) return TRUE;
     return FALSE;
 }
 
@@ -30,6 +33,9 @@ char* getCommandByInput(char *input, int *error) {
     if (strcmp(input, SINONIMOS_COMMAND) == 0) return SINONIMOS_COMMAND;
     if (strcmp(input, ANTONIMOS_COMMAND) == 0) return ANTONIMOS_COMMAND;
     if (strcmp(input, EXPRESSION_COMMAND) == 0) return EXPRESSION_COMMAND;
+    if (strcmp(input, SINONIMOS_LARGE_COMMAND) == 0) return SINONIMOS_COMMAND;
+    if (strcmp(input, ANTONIMOS_LARGE_COMMAND) == 0) return ANTONIMOS_COMMAND;
+    if (strcmp(input, EXPRESSION_LARGE_COMMAND) == 0) return EXPRESSION_COMMAND;
     if (strcmp(input, AYUDA_COMMAND) == 0) return AYUDA_COMMAND;
     if (strcmp(input, QUIT_COMMAND) == 0) return QUIT_COMMAND;
 

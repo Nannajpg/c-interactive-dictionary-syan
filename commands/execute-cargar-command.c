@@ -12,6 +12,7 @@
 #include "../core/lib/include/create-tree-by-filename.h"
 
 void executeCargarCommand(Context* context) {
+  context->error = NO_ERRORS;
   char * fileName = context->commandArgument;
 
   int errorCode = createTreeByFilename(context->trieTree, fileName);
