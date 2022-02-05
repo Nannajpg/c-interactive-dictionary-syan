@@ -4,17 +4,23 @@
 
 #include "./include/context.h"
 #include "../tad/include/trie-tree.h"
+#include "./lib/include/create-tree-by-filename.h"
 
 void migrateDefaultTrieDictionary(Context* context)
 {
+  int errorCode = createTreeByFilename(context->trieTree, "default.dic");
+  if (errorCode == FILE_NOT_EXISTS_ERROR) {
+    printf("Error al cargar diccionario por defecto\n");
+    return;
+  }
 
-  trieInsertWord(context->trieTree, "Manzana");
+  /*trieInsertWord(context->trieTree, "Manzana");
   trieInsertWord(context->trieTree, "Pera");
   trieInsertWord(context->trieTree, "Arepa");
   trieInsertWord(context->trieTree, "Arepas");
   trieInsertWord(context->trieTree, "Marron");
   trieInsertWord(context->trieTree, "Mandarina");
-  trieInsertWord(context->trieTree, "Espagetti");
+  trieInsertWord(context->trieTree, "Espagetti");*/
 
   /*struct TrieNode* manzana = trieSearchWord(context->trieTree, "Manzana");
   int sinonimosSize = trieGetSinonimosSize(manzana);
