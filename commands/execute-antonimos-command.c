@@ -9,7 +9,41 @@
 #include "../core/include/context.h"
 #include "../tad/include/trie-tree.h"
 
+
 void executeAntonimosCommand(Context* context) {
+  
+  /*typedef struct context {
+      char input[129];
+      char* command;
+      char* commandArgument;
+      char* response;
+      int programIsRunning;
+      int error;
+      int enverioment;
+      struct TrieNode* trieTree;
+  } Context;*/
+
+  context->error = NO_ERRORS;
+
+  char *palabra = context->commandArgument;
+  //struct TrieNode *root = ;
+  struct TrieNode *result = trieSearchWord(context->trieTree, palabra);
+  //int aux = trieIsWord(result);
+
+  printf("palabra:%s",palabra);
+
+  if (result == NULL){
+    printf("Error");
+    return;
+  }
+
+  printf("Encontrado menazi");
+
+  //int trieGetAntonimosSize(struct TrieNode *trieNode);
+
+  //context->response = trieGetAntonimos(result);
+
+
   /*
     context->commandArgument  <-- La palabra
     context->response         <-- Donde enviar la respuesta
