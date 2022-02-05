@@ -17,23 +17,24 @@ void executeAntonimosCommand(Context* context) {
   char *palabra = getArgument(context);
   struct TrieNode *root = getTrieTree(context);
   struct TrieNode *result = trieSearchWord(root, palabra);
-  char * texto = (char *) malloc(2000);
+  if (result == NULL){
+    setContextCodeError(context, WORD_NOT_FOUND_ERROR);
+    return;
+  }
+
+  int sizeAntonimos = trieGetAntonimosSize(result);
+  int sizeTextoResult = sizeAntonimos*50 + 20;
+
+  char * texto = (char *) malloc(sizeTextoResult);
   // Limpiamos la basura de texto que puede venir de antemano
   if (strlen(texto) > 0) {
     texto[0] = '\0';
   }
 
   char * textoTmp = (char *) malloc(51);
-
-  if (result == NULL){
-    setContextCodeError(context, WORD_NOT_FOUND_ERROR);
-    return;
-  }
-
-  int size = trieGetAntonimosSize(result);
   char ** arregloCadena = trieGetAntonimos(result);
 
-  for (int i = 0; i < size; i++) {
+  for (int i = 0; i < sizeAntonimos; i++) {
       if (i == 0) {
         snprintf( textoTmp, 50, "%s", arregloCadena[i] );
       }else{
@@ -42,5 +43,5 @@ void executeAntonimosCommand(Context* context) {
       strcat(texto, textoTmp);
   }
 
-  setResponse(context, 2000, texto);
+  setResponse(context, sizeTextoResult, texto);
 }

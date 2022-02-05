@@ -15,11 +15,6 @@ void executeExpressionCommand(Context* context) {
   setContextCodeError(context, NO_ERRORS);
   struct TrieNode ** arregloNodos = NULL;
   char * str = (char *) malloc(51);
-  char * texto = (char *) malloc(2000);
-  // Limpiamos la basura de texto que puede venir de antemano
-  if (strlen(texto) > 0) {
-    texto[0] = '\0';
-  }
   char * fileName = getArgument(context);
 
   arregloNodos = trieGetNodesMatchRegex(getTrieTree(context), arregloNodos, fileName, str, 0);
@@ -32,11 +27,23 @@ void executeExpressionCommand(Context* context) {
     return;
   }
 
+  int sizeLengthTexto = 20;
+  char * texto = (char*) malloc(sizeLengthTexto);
+  // Limpiamos la basura de texto que puede venir de antemano
+  if (texto && strlen(texto) > 0) {
+    texto[0] = '\0';
+  }
+
   for (int i = 0; i < cantidadNodos; i++) {
     char ** antonimos = trieGetAntonimos(arregloNodos[i]);
     int antonimosSize = trieGetAntonimosSize(arregloNodos[i]);
     char ** sinonimos = trieGetSinonimos(arregloNodos[i]);
     int sinonimosSize = trieGetSinonimosSize(arregloNodos[i]);
+
+    int sizeNodoText = (sinonimosSize*50 + antonimosSize*50);
+    sizeLengthTexto = sizeLengthTexto + sizeNodoText;
+    texto = (char*) realloc(texto, sizeLengthTexto);
+
     for (int k = 0; k < antonimosSize; k++) {
       if (wordsWritten <= 0) {
         snprintf( textoTmp, 50, "%s", antonimos[k] );

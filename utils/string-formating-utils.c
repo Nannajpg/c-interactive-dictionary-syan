@@ -18,14 +18,6 @@
         if (!sp) return wholeSentence;
 
         return strndup(wholeSentence, sp-wholeSentence); /* Copy chars until space */
-
-        /*char* startOfSecond = strchr(wholeSentence, separator);
-        if (!startOfSecond) return wholeSentence;
-
-        size_t lengthOfFirst = startOfSecond - wholeSentence;
-        char* first = (char*)malloc((lengthOfFirst + 1) * sizeof(char));
-        strncpy(first, wholeSentence, lengthOfFirst);
-        return first;*/
     }
 
     char* getSecondSentenceBySeparator(char* wholeSentence, char separator) {
