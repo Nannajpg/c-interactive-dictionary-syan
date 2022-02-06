@@ -159,7 +159,6 @@ char removeTilde(char vocal) {
     -119,
   };
 
-  //AAAACaaaacEEeeeeIiiNOOOnooooUUuuuu
   char vocalesSin[34]="AAAACaaaacEEeeeeIiiNOOOnooooUUuuuu";
   for (int i=0;i<34;i++){
     int vocalInt = charToInt(vocal);
@@ -180,13 +179,10 @@ struct TrieNode *trieInsertWord(struct TrieNode *root, const char *word)
     int index;
 
     struct TrieNode *pivot = root;
-    //printf("%s\n", word);
+
     for (level = 0; level < length; level++)
     {
         index = CHAR_TO_INDEX(removeTilde(tolower(word[level])));
-
-        //printf("%c --> %c ll %d\n", word[level], removeTilde(tolower(word[level])), index);
-        //printf("%d\n", index);
 
         if (index >= 0 && index <= ALPHABET_SIZE) {
           if (!pivot->children[index])
@@ -207,13 +203,10 @@ struct TrieNode* trieSearchWord(struct TrieNode *root, const char *word)
     int length = strlen(word);
     int index;
     struct TrieNode *pivot = root;
-    //printf("TO SEARCH %s\n", word);
 
     for (level = 0; level < length; level++)
     {
-        //printf("%c\n", word[level]);
         index = CHAR_TO_INDEX(removeTilde(tolower(word[level])));
-        //printf("%d\n", index);
 
         if (index >= 0 && index <= ALPHABET_SIZE) {
           if (!pivot->children[index])
@@ -245,7 +238,6 @@ struct TrieNode * removeTrieTree(struct TrieNode* root)
       {
           if (root->children[i])
           {
-              //printf("Eliminando %d\n", i);
               // Llama a la eliminacion de uno de sus hijos
               root->children[i] = removeTrieTree(root->children[i]);
           }

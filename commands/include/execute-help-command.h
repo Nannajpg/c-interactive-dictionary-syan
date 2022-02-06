@@ -1,3 +1,3 @@
 #include "../../tad/include/context.h"
 
-void executeQuitCommand(Context* context);
+void executeHelpCommand(Context* context);

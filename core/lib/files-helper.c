@@ -76,7 +76,7 @@ struct Linea ** cargarArchivo(char fname[],long int size, int num) {
     char c[size];
     int i = 0;
     struct Linea ** listaLineas = NULL;
-    listaLineas = (struct Linea **)malloc(sizeof(listaLineas) * (num+2));//structs xp
+    listaLineas = (struct Linea **)malloc(sizeof(listaLineas) * (num+2));
 
     if(archivo == NULL) {
         printf("Error al abrir el archivo\n");
@@ -86,9 +86,7 @@ struct Linea ** cargarArchivo(char fname[],long int size, int num) {
         while(!feof(archivo)) {
             fgets(c,65,archivo);
                 c[strcspn(c, "\r\n")] = 0;
-                    //printf("-->%s (%d)", c, getSpacesInString(c));
                     if (getSpacesInString(c) >= 2 && (c[0] == 'S' || c[0] == 'A' || c[0] == 's' || c[0] == 'a')) {
-                      //printf("%s Added!", getFirstSecondSentenceBySeparator((c+2),' '));
                       if(c[0] == 'S' || c[0] == 's') {
                           listaLineas[i] = crearLinea(getFirstSentenceBySeparator((c+2),' '),getFirstSecondSentenceBySeparator((c+2),' '), 1);
                       }
@@ -97,8 +95,6 @@ struct Linea ** cargarArchivo(char fname[],long int size, int num) {
                       }
                       i++;
                     }
-                    //printf("\n");
-
         }listaLineas[i] = NULL;
     }
     return listaLineas;
